@@ -1,6 +1,6 @@
-# Amplify
+<h1 align="center">Amplify</h1>
 
-<center><i>AI-Powered Note-Taking for Students</i></center>
+<p align="center"><i>AI-Powered Note-Taking for Students.</i></p>
 
 **Amplify** is a note-taking application inspired by [Obsidian](https://obsidian.md/) and [AnyType](https://anytype.io/) designed specifically for students. It integrates seamlessly with existing Google [Workspace](https://workspace.google.com/)/[Classroom](https://classroom.google.com/) features while offering an AI-powered enhancement layer powered by [OpenAI](https://openai.com/).
 
