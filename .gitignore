@@ -1,3 +1,13 @@
+# Turbo
+.turbo
+
+# DFX
+.dfx
+src/declarations
+
+# Azle
+.azle
+
 # Logs
 logs
 *.log
