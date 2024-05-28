@@ -1,15 +1,18 @@
-// NOTE: pakitanggal nalang if it's not yet working.
-window.onscroll = function() {scrollFunction();};
+window.onscroll = function () {
+    scrollFunction();
+};
 
 /*
- * This function applies the `header-hidden` class to `header-title` ID
+ * This function applies the `navbar-minimized` class to `navbar-title` ID
  * when the user scrolls 80 pixels down.
  */
-function scrollFunction()
-{
-    // TODO: Implement `header-hidden` class.
-    var header_title = document.getElementById("header-title");
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80)
-    {header_title.classList.add("header-hidden");}
-    else {header_title.classList.remove("header-hidden");}
+function scrollFunction() {
+    var navbar = document.getElementById("navbar-title");
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        navbar.classList.add("navbar-minimized");
+        navbar.classList.remove("navbar-normal");
+    } else {
+        navbar.classList.remove("navbar-minimized");
+        navbar.classList.add("navbar-normal");
+    }
 }
