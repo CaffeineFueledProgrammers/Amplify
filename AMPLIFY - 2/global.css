@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: auto;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-hind-guntur: "Hind Guntur";
+  --font-mukta-vaani: "Mukta Vaani";
+  --font-montserrat: "Montserrat";
+
+  /* font sizes */
+  --font-size-xl: 20px;
+  --font-size-16xl: 35px;
+  --font-size-81xl: 100px;
+  --font-size-61xl: 80px;
+  --font-size-41xl: 60px;
+  --font-size-11xl: 30px;
+
+  /* Colors */
+  --color-gray-100: #1e1e24;
+  --color-gray-200: #16171b;
+  --color-antiquewhite-100: #ffebd6;
+  --color-antiquewhite-200: rgba(240, 221, 203, 0.4);
+  --color-floralwhite: #fff8f0;
+  --color-white: #fff;
+  --color-blanchedalmond-100: #fff0d1;
+  --color-lightskyblue: #71b0e4;
+  --color-gainsboro: #e8e2db;
+
+  /* Gaps */
+  --gap-26xl: 45px;
+  --gap-15xl: 34px;
+
+  /* Paddings */
+  --padding-34xl: 53px;
+  --padding-17xl: 36px;
+
+  /* Border radiuses */
+  --br-mid: 17px;
+}
