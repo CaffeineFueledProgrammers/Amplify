@@ -22,6 +22,27 @@
   }
 }
 
+@keyframes fade {
+    /* Make a fade-in animation to be used in images */
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slide-from-left {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+
+
 /*home*/
 .bg1-icon {
   position: absolute;
@@ -69,6 +90,53 @@
   left: 33.26%;
   font-weight: 900;
 }
+
+.raise:hover,
+.raise:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em #566498;
+    transform: translateY(-0.25em);
+}
+
+.buttons {
+    position: absolute;
+    right: -20px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    max-height: 5%;
+    width: 500px;
+}
+
+button {
+    color: var(--color);
+    transition: 0.25s;
+    color: #fff8f0;
+}
+
+:hover,
+:focus {
+    border-color: #566498;
+    color: #fff;
+}
+
+button {
+    background: none;
+    border: 2px solid #1e1e24;
+    font: inherit;
+    line-height: 1;
+    margin: 0.5em;
+    padding: 1em 2em;
+    color: #fff8f0;
+    font-size: 20px;
+}
+
+.amplify1 {
+    display: none;
+}
+
 .home1 {
   align-self: stretch;
   position: relative;
@@ -86,6 +154,54 @@
   justify-content: center;
   text-align: center;
 }
+
+.logo1-icon {
+    width: 112px;
+    position: relative;
+    height: 117px;
+    object-fit: cover;
+}
+
+.navsreen {
+    position: relative;
+    right: 100px;
+    width: 2500px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar-title {
+    transition: 0.5s ease;
+}
+
+.navbar-normal {
+    height: 133px;
+}
+
+.navbar-normal > .logo1-icon {
+    width: auto;
+    position: relative;
+    height: 117px;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+.navbar-minimized {
+    height: 75px;
+}
+
+.navbar-minimized > .logo1-icon {
+    width: auto;
+    position: relative;
+    height: 75px;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
 .home-child {
   position: relative;
   background-color: var(--color-gray-200);
@@ -153,7 +269,7 @@
   text-align: center;
   display: flex;
   flex-direction: row;
-  max-height: 30px;
+  max-height: 5%;
   width: 500px;
 }
 
@@ -188,18 +304,44 @@ button {
 }
 
 .navsreen {
-  position: relative;
-  left: -100px;
-  width: 2500px;
-  height: 133px;
-  overflow: hidden;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+    position: relative;
+    right: 100px;
+    width: 2500px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
+#navbar-title {
+    transition: 0.5s ease;
+}
+
+.navbar-normal {
+    height: 133px;
+}
+
+.navbar-normal > .logo1-icon {
+    width: auto;
+    position: relative;
+    height: 117px;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+.navbar-minimized {
+    height: 75px;
+}
+
+.navbar-minimized > .logo1-icon {
+    width: auto;
+    position: relative;
+    height: 75px;
+    object-fit: cover;
+    transition: 0.5s ease;
+}
 .sign-up1:hover {
   color: var(--color-lightskyblue);
 }
@@ -221,7 +363,7 @@ button {
   background: linear-gradient(#16171b, #16171b);
   box-shadow: 2px 2px 4px #000;
   box-sizing: border-box;
-  width: 1480px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   font-size: var(--font-size-11xl);
@@ -501,6 +643,7 @@ button {
   font-size: 300px;
 }
 
+/* flashcards */
 .icon {
   position: absolute;
   top: 2350px;
