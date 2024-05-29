@@ -1,16 +1,25 @@
-# Node
-node_modules
+# Various IDEs and Editors
+.vscode/
+.idea/
+**/*~
 
-# Turbo
-.turbo
+# Mac OSX temporary files
+.DS_Store
+**/.DS_Store
 
-# VSC
-.vscode/*
-!.vscode/settings.json
+# dfx temporary files
+.dfx/
 
-# DFX
-.dfx
-src/declarations
+# generated files
+**/declarations/
 
-# Azle
-.azle
+# rust
+target/
+
+# frontend code
+node_modules/
+dist/
+.svelte-kit/
+
+# environment variables
+.env

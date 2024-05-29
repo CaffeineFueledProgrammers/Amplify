@@ -1,44 +1,38 @@
 {
-  "version": 1,
-  "dfx": "0.19.0",
   "canisters": {
-    "backend": {
-      "type": "custom",
-      "main": "backend/index.ts",
-      "candid": "backend/index.did",
-      "candid_gen": "automatic",
-      "build": "npx azle backend",
-      "wasm": ".azle/backend/backend.wasm",
+    "amplify-icp-backend": {
+      "build": "python -m kybra amplify-icp-backend src/amplify-icp-backend/src/main.py src/amplify-icp-backend/amplify-icp-backend.did",
+      "candid": "src/amplify-icp-backend/amplify-icp-backend.did",
       "gzip": true,
-      "assets": [["backend/database/migrations", "migrations"]],
-      "metadata": [
-        {
-          "name": "candid:service",
-          "path": "backend/index.did"
+      "post_install": ".kybra/amplify-icp-backend/post_install.sh",
+      "tech_stack": {
+        "cdk": {
+          "kybra": {}
         },
-        {
-          "name": "cdk:name",
-          "content": "azle"
+        "language": {
+          "python": {}
         }
-      ]
-    },
-    "frontend": {
-      "type": "assets",
-      "dependencies": ["backend"],
-      "frontend": {
-        "entrypoint": "frontend/build/index.html"
       },
-      "source": ["frontend/build"]
-    },
-    "internet-identity": {
       "type": "custom",
-      "candid": "https://github.com/dfinity/internet-identity/releases/download/release-2023-09-08/internet_identity.did",
-      "wasm": "https://github.com/dfinity/internet-identity/releases/download/release-2023-09-08/internet_identity_dev.wasm.gz",
-      "remote": {
-        "id": {
-          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai"
-        }
-      }
+      "wasm": ".kybra/amplify-icp-backend/amplify-icp-backend.wasm"
+    },
+    "amplify-icp-frontend": {
+      "dependencies": [
+        "amplify-icp-backend"
+      ],
+      "source": [
+        "src/amplify-icp-frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "amplify-icp-frontend"
     }
-  }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
