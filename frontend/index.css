@@ -165,7 +165,7 @@ button {
 .navsreen {
     position: relative;
     right: 100px;
-    width: 2500px;
+    width: 1500px;
     overflow: hidden;
     flex-shrink: 0;
     display: flex;
@@ -262,7 +262,7 @@ button {
 
 .buttons {
   position: absolute;
-  right: -20px;
+
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -271,6 +271,8 @@ button {
   flex-direction: row;
   max-height: 5%;
   width: 500px;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 button {
@@ -294,25 +296,27 @@ button {
   padding: 1em 2em;
   color: #fff8f0;
   font-size: 20px;
+    align-items: center;
+  justify-content: flex-end;
 }
 
 .logo1-icon {
+  position: absolute;
   width: 112px;
   position: relative;
   height: 117px;
   object-fit: cover;
+
 }
 
 .navsreen {
     position: relative;
     right: 100px;
-    width: 2500px;
+    width: 100%;
     overflow: hidden;
     flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+   
+  
 }
 
 #navbar-title {
@@ -369,8 +373,9 @@ button {
   font-size: var(--font-size-11xl);
   color: var(--color-white);
   font-family: var(--font-mukta-vaani);
-  align-items: center;
+
   justify-content: flex-end;
+  max-width: 1500px;
 }
 
 /*Sharing And Collaboration*/
@@ -414,7 +419,7 @@ button {
   position: absolute;
   top: 172px;
   left: 47px;
-  width: 630px;
+  width: 670px;
   height: 533px;
 }
 .collaborators {
@@ -530,10 +535,12 @@ button {
   box-sizing: border-box;
 }
 .collaborator3 {
+  position: absolute;
   top: 0;
-  left: 0;
+  left: 0;  
+  background-color: #0F1322;
   border-radius: var(--br-8xl);
-  background-color: var(--color-gray-400);
+
   width: 110px;
 }
 .profile3-icon {
