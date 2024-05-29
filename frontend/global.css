@@ -21,13 +21,20 @@ body {
   /* Colors */
   --color-gray-100: #1e1e24;
   --color-gray-200: #16171b;
+  --color-gray-300: #131419;
+  --color-gray-400: #0f1322;
+  --color-white: #fff;
+  --color-blanchedalmond-100: #fff0d1;
+  --color-blanchedalmond-200: rgba(255, 240, 209, 0.4);
   --color-antiquewhite-100: #ffebd6;
   --color-antiquewhite-200: rgba(240, 221, 203, 0.4);
   --color-floralwhite: #fff8f0;
-  --color-white: #fff;
-  --color-blanchedalmond-100: #fff0d1;
-  --color-lightskyblue: #71b0e4;
-  --color-gainsboro: #e8e2db;
+  --color-steelblue-100: #566498;
+  --color-darkgray: #a19fa8;
+  --color-darkslategray-100: #333;
+  --color-gainsboro-100: #e8e2db;
+  --color-gainsboro-200: #d9d9d9;
+  --color-dimgray: #5e6275;
 
   /* Gaps */
   --gap-26xl: 45px;
@@ -39,4 +46,7 @@ body {
 
   /* Border radiuses */
   --br-mid: 17px;
+  --br-mid: 17px;
+  --br-30xl: 49px;
+  --br-8xl: 27px;
 }
