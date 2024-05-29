@@ -23,25 +23,23 @@
 }
 
 @keyframes fade {
-    /* Make a fade-in animation to be used in images */
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  /* Make a fade-in animation to be used in images */
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-from-left {
-    0% {
-        transform: translateX(-50%);
-    }
-    100% {
-        transform: translateX(0%);
-    }
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
-
-
 
 /*home*/
 .bg1-icon {
@@ -93,48 +91,48 @@
 
 .raise:hover,
 .raise:focus {
-    box-shadow: 0 0.5em 0.5em -0.4em #566498;
-    transform: translateY(-0.25em);
+  box-shadow: 0 0.5em 0.5em -0.4em #566498;
+  transform: translateY(-0.25em);
 }
 
 .buttons {
-    position: absolute;
-    right: -20px;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    max-height: 5%;
-    width: 500px;
+  position: absolute;
+  right: -20px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  max-height: 5%;
+  width: 500px;
 }
 
 button {
-    color: var(--color);
-    transition: 0.25s;
-    color: #fff8f0;
+  color: var(--color);
+  transition: 0.25s;
+  color: #fff8f0;
 }
 
 :hover,
 :focus {
-    border-color: #566498;
-    color: #fff;
+  border-color: #566498;
+  color: #fff;
 }
 
 button {
-    background: none;
-    border: 2px solid #1e1e24;
-    font: inherit;
-    line-height: 1;
-    margin: 0.5em;
-    padding: 1em 2em;
-    color: #fff8f0;
-    font-size: 20px;
+  background: none;
+  border: 2px solid #1e1e24;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+  color: #fff8f0;
+  font-size: 20px;
 }
 
 .amplify1 {
-    display: none;
+  display: none;
 }
 
 .home1 {
@@ -153,53 +151,6 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
-}
-
-.logo1-icon {
-    width: 112px;
-    position: relative;
-    height: 117px;
-    object-fit: cover;
-}
-
-.navsreen {
-    position: relative;
-    right: 100px;
-    width: 1500px;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-#navbar-title {
-    transition: 0.5s ease;
-}
-
-.navbar-normal {
-    height: 133px;
-}
-
-.navbar-normal > .logo1-icon {
-    width: auto;
-    position: relative;
-    height: 117px;
-    object-fit: cover;
-    transition: 0.5s ease;
-}
-
-.navbar-minimized {
-    height: 75px;
-}
-
-.navbar-minimized > .logo1-icon {
-    width: auto;
-    position: relative;
-    height: 75px;
-    object-fit: cover;
-    transition: 0.5s ease;
 }
 
 .home-child {
@@ -254,6 +205,18 @@ button {
 }
 /*navigation*/
 
+.navsreen {
+  position: relative;
+  right: 100px;
+  width: 1500px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .raise:hover,
 .raise:focus {
   box-shadow: 0 0.5em 0.5em -0.4em #566498;
@@ -296,55 +259,44 @@ button {
   padding: 1em 2em;
   color: #fff8f0;
   font-size: 20px;
-    align-items: center;
+  align-items: center;
   justify-content: flex-end;
 }
 
 .logo1-icon {
   position: absolute;
   width: 112px;
-  position: relative;
+  right: 30%;
   height: 117px;
   object-fit: cover;
-
-}
-
-.navsreen {
-    position: relative;
-    right: 100px;
-    width: 100%;
-    overflow: hidden;
-    flex-shrink: 0;
-   
-  
 }
 
 #navbar-title {
-    transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 
 .navbar-normal {
-    height: 133px;
+  height: 133px;
 }
 
 .navbar-normal > .logo1-icon {
-    width: auto;
-    position: relative;
-    height: 117px;
-    object-fit: cover;
-    transition: 0.5s ease;
+  width: auto;
+  position: relative;
+  height: 117px;
+  object-fit: cover;
+  transition: 0.5s ease;
 }
 
 .navbar-minimized {
-    height: 75px;
+  height: 75px;
 }
 
 .navbar-minimized > .logo1-icon {
-    width: auto;
-    position: relative;
-    height: 75px;
-    object-fit: cover;
-    transition: 0.5s ease;
+  width: auto;
+  position: relative;
+  height: 75px;
+  object-fit: cover;
+  transition: 0.5s ease;
 }
 .sign-up1:hover {
   color: var(--color-lightskyblue);
@@ -373,8 +325,6 @@ button {
   font-size: var(--font-size-11xl);
   color: var(--color-white);
   font-family: var(--font-mukta-vaani);
-
-  justify-content: flex-end;
   max-width: 1500px;
 }
 
@@ -537,8 +487,8 @@ button {
 .collaborator3 {
   position: absolute;
   top: 0;
-  left: 0;  
-  background-color: #0F1322;
+  left: 0;
+  background-color: #0f1322;
   border-radius: var(--br-8xl);
 
   width: 110px;
