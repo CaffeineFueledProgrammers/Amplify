@@ -224,7 +224,6 @@ button {
 }
 
 
-
 .nav {
   position: fixed;
   z-index: 1;
@@ -243,32 +242,254 @@ button {
   justify-content: flex-end;}
 
   /*Sharing And Collaboration*/
-.a-8-1 {
-  width: 726px;
-  position: relative;
-  height: 706px;
-  object-fit: cover;
-}
+  .bgnote {
+    position: absolute;
+    top: 136px;
+    left: 0;
+    border-radius: 66px;
+    background-color: var(--color-gray-100);
+    width: 690px;
+    height: 701px;
+  }
+  .advantage-of-digital {
+    margin: 0;
+  }
+  .advantage-of-digital-container {
+    position: absolute;
+    top: 8.07%;
+    left: 4.44%;
+    font-size: var(--font-size-21xl);
+    line-height: 150%;
+    font-weight: 900;
+    color: var(--color-floralwhite);
+  }
+  .note1 {
+    position: absolute;
+    top: 0;
+    left: 28px;
+    line-height: 150%;
+  }
+  .digital-note-taking-has-container {
+    position: absolute;
+    top: 203px;
+    left: 0;
+    line-height: 150%;
+    display: inline-block;
+    width: 630px;
+  }
+  .collaborators,
+  .note {
+    position: absolute;
+    top: 172px;
+    left: 47px;
+    width: 630px;
+    height: 533px;
+  }
+  .collaborators {
+    top: 14px;
+    left: -18px;
+    border-radius: 26px;
+    background-color: var(--color-darkslategray-100);
+    width: 635px;
+    height: 286px;
+    opacity: 0.9;
+  }
+  .collaborators1 {
+    position: absolute;
+    top: 39px;
+    left: 219px;
+    line-height: 150%;
+  }
+  .user-1 {
+    position: absolute;
+    left: 8px;
+  }
+  .user-1,
+  .user-2,
+  .user-3 {
+    top: 0;
+    line-height: 150%;
+  }
+  .user-2 {
+    position: absolute;
+    left: 169px;
+  }
+  .add:hover,
+  .user-2:hover,
+  .user-3:hover {
+    color: var(--color-dimgray);
+  }
+  .user-3 {
+    left: 328px;
+  }
+  .add,
+  .names,
+  .user-3 {
+    position: absolute;
+  }
+  .add {
+    top: 0;
+    left: 487px;
+    line-height: 150%;
+  }
+  .names {
+    top: 237px;
+    left: 30px;
+    width: 554px;
+    height: 27px;
+    font-size: var(--font-size-lg);
+  }
+  .collaborator1 {
+    position: absolute;
+    top: 0;
+    left: -1px;
+    border-radius: var(--br-8xl);
+    background-color: var(--color-gainsboro-200);
+    width: 107px;
+    height: 112px;
+  }
+  .profile1-icon {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    width: 88px;
+    height: 92px;
+    object-fit: cover;
+  }
+  .collab1,
+  .collaborator2 {
+    position: absolute;
+    top: 87px;
+    left: 15px;
+    width: 106px;
+    height: 111px;
+  }
+  .collab1:hover {
+    border: 2px dashed var(--color-dimgray);
+    box-sizing: border-box;
+  }
+  .collaborator2 {
+    top: 0;
+    left: 0;
+    border-radius: var(--br-8xl);
+    background-color: #000a23;
+    width: 107px;
+    height: 115px;
+  }
+  .profile2-icon {
+    position: absolute;
+    top: 6px;
+    left: 5px;
+    width: 97px;
+    height: 89px;
+    object-fit: cover;
+  }
+  .collab2,
+  .collaborator3 {
+    position: absolute;
+    top: 87px;
+    left: 176px;
+    width: 107px;
+    height: 115px;
+  }
+  .collab2:hover,
+  .collab3:hover {
+    border: 1px dashed var(--color-dimgray);
+    box-sizing: border-box;
+  }
+  .collaborator3 {
+    top: 0;
+    left: 0;
+    border-radius: var(--br-8xl);
+    background-color: var(--color-gray-400);
+    width: 110px;
+  }
+  .profile3-icon {
+    position: absolute;
+    top: 7px;
+    left: 4px;
+    width: 101px;
+    height: 102px;
+    object-fit: cover;
+  }
+  .addicon,
+  .collab3 {
+    position: absolute;
+    top: 87px;
+    left: 328px;
+    width: 110px;
+    height: 115px;
+  }
+  .addicon {
+    top: -12px;
+    left: -8px;
+    width: 126px;
+    height: 133px;
+    object-fit: cover;
+  }
+  .add1,
+  .add2,
+  .shareicon {
+    position: absolute;
+    width: 110px;
+  }
+  .add2 {
+    top: 0;
+    left: 0;
+    border-radius: var(--br-8xl);
+    border: 1px solid var(--color-floralwhite);
+    box-sizing: border-box;
+    height: 115px;
+  }
+  .add1 {
+    top: 90px;
+    left: 474px;
+    height: 110px;
+  }
+
+  .add1:hover {
+    background-color: #33353d;
+  }
+  .shareicon {
+    position: absolute;
+    top: -70px;
+    left: -350%;
+    width: 50px;
+    height: 60px;
+    object-fit: cover;
+  }
+  .collaboration4 {
+    position: absolute;
+    top: 534px;
+    left: 50px;
+    width: 627px;
+    height: 294px;
+    color: var(--color-antiquewhite-100);
+  }
+  .ressponsivescs {
+    width: 100%;
+    position: relative;
+    height: 810px;
+    text-align: left;
+    font-size: var(--font-size-xl);
+    color: var(--color-white);
+    font-family: var(--font-montserrat); 
+    left: -30px;
+  }
+  
+
 
 .scs,
 .scs-child {
   box-sizing: border-box;
 }
 
-.scs-child {
-  width: 756px;
-  position: relative;
-  border-top: 7px solid var(--color-white);
-  height: 7px;
-  margin-left: -726px;
-}
-
 .scs {
   position: absolute;
-  top: 3759px;
+  top: 3500px;
   left: -693px;
   width: 1453px;
-  height: 742px;
+  height: auto;
   overflow: hidden;
   display: flex;
   flex-direction: row;
