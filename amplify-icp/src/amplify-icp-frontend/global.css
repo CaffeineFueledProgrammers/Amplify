@@ -1,12 +1,10 @@
 body {
-  margin: 0;
-  padding: auto;
+  margin: 10px;
+  padding: 0;
   line-height: normal;
   max-width: 100vw;
 }
-*{
-  max-width: 100vw;
-}
+
 
 :root {
   /* fonts */
@@ -33,6 +31,7 @@ body {
   --color-antiquewhite-100: #ffebd6;
   --color-antiquewhite-200: rgba(240, 221, 203, 0.4);
   --color-floralwhite: #fff8f0;
+  --color-lightskyblue: #71b0e4;
   --color-steelblue-100: #566498;
   --color-darkgray: #a19fa8;
   --color-darkslategray-100: #333;
