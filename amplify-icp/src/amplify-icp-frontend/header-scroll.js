@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const faders = document.querySelectorAll('.fade-in');
 
     const appearOptions = {
-        threshold: 0.5, /* Adjust this value based on when you want the animation to trigger */
+        threshold: 1, /* Adjust this value based on when you want the animation to trigger */
         rootMargin: "0px 0px -50px 0px"
     };
 
@@ -39,4 +39,19 @@ document.addEventListener('DOMContentLoaded', () => {
     faders.forEach(fader => {
         appearOnScroll.observe(fader);
     });
+});
+document.addEventListener('DOMContentLoaded', function () {
+    const containers = document.querySelectorAll('.content-container');
+
+    function checkVisibility() {
+        containers.forEach(container => {
+            const rect = container.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                container.classList.add('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', checkVisibility);
+    checkVisibility(); // Initial check
 });
