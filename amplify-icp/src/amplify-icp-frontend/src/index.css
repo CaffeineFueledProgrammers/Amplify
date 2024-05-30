@@ -38,6 +38,8 @@ html {
     padding: 0;
     height: 100%;
     overflow-x: hidden;
+    align-items: center;
+    justify-content: center;
 }
 .bg1-icon {
     background-size: cover;
@@ -58,7 +60,11 @@ html {
     font-family: var(--font-hind-guntur);
     color: #a19fa8;
     display: inline-block;
-    text-shadow: 1px 0 0#000, 0 1px 0#000, -1px 0 0#000, 0-1px 0#000;
+    text-shadow:
+        1px 0 0#000,
+        0 1px 0#000,
+        -1px 0 0#000,
+        0-1px 0#000;
 }
 
 .ampdescription,
@@ -306,7 +312,7 @@ button {
 
 .nav {
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     top: 0;
     left: 0;
     background: linear-gradient(#16171b, #16171b);
@@ -395,6 +401,7 @@ button {
     left: 169px;
 }
 .add:hover,
+.user-1:hover,
 .user-2:hover,
 .user-3:hover {
     color: var(--color-dimgray);
@@ -689,11 +696,22 @@ button {
 }
 
 .text-shadow {
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.04), 2px 2px rgba(0, 0, 0, 0.04), 3px 3px rgba(0, 0, 0, 0.04),
-        4px 4px rgba(0, 0, 0, 0.04), 0.125rem 0.125rem rgba(0, 0, 0, 0.04), 6px 6px rgba(0, 0, 0, 0.04),
-        7px 7px rgba(0, 0, 0, 0.04), 8px 8px rgba(0, 0, 0, 0.04), 9px 9px rgba(0, 0, 0, 0.04),
-        0.3125rem 0.3125rem rgba(0, 0, 0, 0.04), 11px 11px rgba(0, 0, 0, 0.04), 12px 12px rgba(0, 0, 0, 0.04),
-        13px 13px rgba(0, 0, 0, 0.04), 14px 14px rgba(0, 0, 0, 0.04), 0.625rem 0.625rem rgba(0, 0, 0, 0.04);
+    text-shadow:
+        1px 1px rgba(0, 0, 0, 0.04),
+        2px 2px rgba(0, 0, 0, 0.04),
+        3px 3px rgba(0, 0, 0, 0.04),
+        4px 4px rgba(0, 0, 0, 0.04),
+        0.125rem 0.125rem rgba(0, 0, 0, 0.04),
+        6px 6px rgba(0, 0, 0, 0.04),
+        7px 7px rgba(0, 0, 0, 0.04),
+        8px 8px rgba(0, 0, 0, 0.04),
+        9px 9px rgba(0, 0, 0, 0.04),
+        0.3125rem 0.3125rem rgba(0, 0, 0, 0.04),
+        11px 11px rgba(0, 0, 0, 0.04),
+        12px 12px rgba(0, 0, 0, 0.04),
+        13px 13px rgba(0, 0, 0, 0.04),
+        14px 14px rgba(0, 0, 0, 0.04),
+        0.625rem 0.625rem rgba(0, 0, 0, 0.04);
 }
 
 /*hero*/
@@ -1391,20 +1409,14 @@ svg {
 
 .fade-in {
     opacity: 0; /* Initial state */
-    transform: translateY(40px); /* Optional: adds a slight slide-up effect */
-    transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+    transform: translateY(20px); /* Optional: adds a slight slide-up effect */
+    transition:
+        opacity 1s ease-out,
+        transform 1s ease-out;
+    border-radius: 5px;
 }
 
 .fade-in.visible {
     opacity: 1; /* Fade in */
     transform: translateY(0); /* Reset slide-up effect */
-}
-
-.content-container {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-}
-
-.content-container.visible {
-    opacity: 1;
 }
