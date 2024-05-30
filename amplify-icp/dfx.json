@@ -1,20 +1,21 @@
 {
   "canisters": {
     "amplify-icp-backend": {
-      "build": "python -m kybra amplify-icp-backend src/amplify-icp-backend/src/main.py src/amplify-icp-backend/amplify-icp-backend.did",
+      "build": "npx azle amplify-icp-backend",
       "candid": "src/amplify-icp-backend/amplify-icp-backend.did",
       "gzip": true,
-      "post_install": ".kybra/amplify-icp-backend/post_install.sh",
+      "main": "src/amplify-icp-backend/src/index.ts",
       "tech_stack": {
         "cdk": {
-          "kybra": {}
+          "azle": {}
         },
         "language": {
-          "python": {}
+          "javascript": {},
+          "typescript": {}
         }
       },
       "type": "custom",
-      "wasm": ".kybra/amplify-icp-backend/amplify-icp-backend.wasm"
+      "wasm": ".azle/amplify-icp-backend/amplify-icp-backend.wasm"
     },
     "amplify-icp-frontend": {
       "dependencies": [
