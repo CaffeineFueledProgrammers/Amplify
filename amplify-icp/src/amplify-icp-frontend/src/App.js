@@ -1,5 +1,5 @@
 import { html, render } from 'lit-html';
-import { amplify_icp_backend } from 'declarations/amplify-icp-backend';
+import { aicp_backend } from 'declarations/aicp_backend';
 import logo from './logo2.svg';
 
 class App {
@@ -12,7 +12,7 @@ class App {
   #handleSubmit = async (e) => {
     e.preventDefault();
     const name = document.getElementById('name').value;
-    this.greeting = await amplify_icp_backend.greet(name);
+    this.greeting = await aicp_backend.greet(name);
     this.#render();
   };
 
