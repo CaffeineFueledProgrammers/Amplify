@@ -22,8 +22,6 @@
   }
 }
 
-
-
 @keyframes slide-from-left {
   0% {
     transform: translateX(-50%);
@@ -34,11 +32,14 @@
 }
 
 /*home*/
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow-x: hidden;
+  align-items: center;
+  justify-content: center;
 }
 .bg1-icon {
   background-size: cover;
@@ -307,7 +308,7 @@ button {
 
 .nav {
   position: fixed;
-  z-index: 1;
+  z-index: 1000;
   top: 0;
   left: 0;
   background: linear-gradient(#16171b, #16171b);
@@ -396,6 +397,7 @@ button {
   left: 169px;
 }
 .add:hover,
+.user-1:hover,
 .user-2:hover,
 .user-3:hover {
   color: var(--color-dimgray);
@@ -1285,7 +1287,6 @@ button {
   width: 100vw;
   height: 4904px;
   overflow: hidden;
-
 }
 
 .desktop-1-parent {
@@ -1405,4 +1406,3 @@ svg {
   opacity: 1; /* Fade in */
   transform: translateY(0); /* Reset slide-up effect */
 }
-
