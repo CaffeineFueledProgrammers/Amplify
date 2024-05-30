@@ -45,12 +45,12 @@
 .bg1-icon {
   position: absolute;
   height: 100%;
-  width: 100%;
+  width: 105%;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  max-width: 100%;
+  max-width: 103%;
   overflow: hidden;
   max-height: 100%;
   object-fit: cover;
@@ -60,7 +60,7 @@
   height: 3.87%;
   width: 34.17%;
   top: 59.68%;
-  left: 33.26%;
+  left: 32.26%;
   font-size: var(--font-size-xl);
   font-family: var(--font-hind-guntur);
   color: #a19fa8;
@@ -208,7 +208,7 @@ button {
 .navsreen {
   position: relative;
   right: 100px;
-  width: 1500px;
+  width: 105%;
   overflow: hidden;
   flex-shrink: 0;
   display: flex;
@@ -225,7 +225,6 @@ button {
 
 .buttons {
   position: absolute;
-
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -233,9 +232,10 @@ button {
   display: flex;
   flex-direction: row;
   max-height: 5%;
-  width: 500px;
+  width: 1500px;
   align-items: center;
   justify-content: flex-end;
+  right: 10px;
 }
 
 button {
@@ -1288,9 +1288,10 @@ button {
   left: -12px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   background-color: #131419;
-  width: 1500px;
+  width: 105%;
   height: 4904px;
   overflow: hidden;
+
 }
 
 .desktop-1-parent {
@@ -1398,3 +1399,4 @@ svg {
   max-width: 100%;
   display: block;
 }
+
