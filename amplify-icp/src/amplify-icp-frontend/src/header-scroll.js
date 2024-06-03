@@ -7,7 +7,7 @@ window.onscroll = function () {
  * when the user scrolls 80 pixels down.
  */
 function scrollFunction() {
-    var navbar = document.getElementById("navbar-title");
+    var navbar = document.getElementById("main-nav");
     if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
         navbar.classList.add("navbar-minimized");
         navbar.classList.remove("navbar-normal");
