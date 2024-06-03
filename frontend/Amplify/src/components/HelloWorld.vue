@@ -1,30 +1,14 @@
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
-import { createApp } from 'vue'
-
-// Vuetify
-import 'vuetify/styles'
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
-
-// Components
-import App from './App.vue'
-
-const vuetify = createVuetify({
-  components,
-  directives,
-})
-
-createApp(App).use(vuetify).mount('#app')
-
-</script>
-
 <template>
- 
-</style>
+   <v-app class="rounded rounded-md">
+    <v-app-bar title="Application bar"></v-app-bar>
+
+
+    <v-main class="d-flex align-center justify-center" style="min-height: 100dvh;">
+      Main Content
+    </v-main>
+  </v-app>
+</template>
+
+<script setup>
+  //
+</script>
