@@ -1,5 +1,7 @@
 <template>
-  <HelloWorld />
+<main>
+  <navbar/>
+  </main>
 </template>
 
 <script setup>
