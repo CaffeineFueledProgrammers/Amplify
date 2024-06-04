@@ -1,7 +1,6 @@
 <template>
-<main>
-  <navbar/>
-  </main>
+<v-app>
+</v-app>
 </template>
 
 <script setup>

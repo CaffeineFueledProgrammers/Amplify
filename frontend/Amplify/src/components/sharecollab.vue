@@ -58,10 +58,13 @@
                 </div>
                 </v-sharetxt>
             </v-share>
-        </v-main>
+        </v-main> 
+        <AppFooter/>
     </v-app>
+      
 </template>
 <style>
+
 v-note{
     display: block;
     width: 50vw;
