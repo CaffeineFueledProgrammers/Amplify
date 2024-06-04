@@ -8,7 +8,7 @@
 
 > **Roadmap**
 > 
-> - [ ] Homepage
+> - [X] Homepage
 > - [ ] Login System
 >   - [ ] Sharing/Collaboration System
 >   - [ ] Text/Note Editor
