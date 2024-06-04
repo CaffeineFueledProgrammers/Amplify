@@ -21,24 +21,33 @@
 v-app-home {
     height: 100vh;
     min-height: 100vh;
-    background-image: url("./public/bg1@2x.png"); 
+    background-image: url("@/assets/bg@2x.png"); 
     background-size: 100vw 100vh;
 }
 .home {
  
     font-size: 2rem;
+    font-family: 'Montserrat',sans-serif ;
+    font-weight: bolder;
     color: #fff;
+
     text-align: center;
 }
+
 .home_description {
-    font-size: 1rem;
-    color: #fff;
+       font-size: 1rem;
+    font-family: 'MuktaVaani',sans-serif ;
+    color: #a8a8a8;
     text-align: center;
+
 }
 .home_amplify {
     font-size: 6rem;
+    font-family: 'Montserrat',sans-serif ;
+    font-weight:900;
     color: #ffffff;
     background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%);
+    background-size: cover;
     background-position: 0;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

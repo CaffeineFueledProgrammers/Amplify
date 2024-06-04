@@ -3,7 +3,7 @@
         <v-main>
             <v-share class="d-flex  flex pa-3 ma-2">
                 <v-note>
-                <v-sheet :rounded="rounded" class="mx-auto block justify-start align-start">
+                <v-sheet rounded="rounded" class="mx-auto block justify-start align-start opacity-0.5">
                     <v-note_title>
                     <h2>NOTE</h2>
                     <h1>ADVANTAGE OF DIGITAL NOTE TAKING</h1>
@@ -15,28 +15,28 @@
                         information. Moreover, the powerful search functions in these apps enable users to quickly
                         locate specific notes or keywords, making the retrieval of information far
                     </div>
-                    <v-collaborators>
-                        <v-sheet :elevation="6" class="align-center justify-center ma-0">
+                    <v-collaborators><h2>Collaborators</h2>
+                        <v-sheet :elevation="6" color= "rgba(255, 240, 209, 0.4)" height="200" class=" d-flex align-center justify-center ma-0 ">
                             <img src="" />
-                            <h2>Collaborators</h2>
-                            <v-btn value="user 1">
+                            
+                            <v-btn >
                                 <v-icon>mdi-history</v-icon>
 
                                 <span>User 1</span>
                             </v-btn>
 
-                            <v-btn value="favorites">
+                            <v-btn >
                                 <v-icon>mdi-heart</v-icon>
 
                                 <span>User 2</span>
                             </v-btn>
 
-                            <v-btn value="nearby">
+                            <v-btn >
                                 <v-icon>mdi-map-marker</v-icon>
 
                                 <span>User 3</span>
                             </v-btn>
-                            <v-btn value="nearby">
+                            <v-btn >
                                 <v-icon> mdi-share </v-icon>
 
                                 <span>Invite</span>
@@ -69,27 +69,40 @@ v-note{
     display: block;
     width: 50vw;
     max-width: 50vw;
+    color:#1e1e24;
+    opacity: 0.7;
 }
-v-shrare h1 {
+v-note_title h1 {
     font-size: 1.5rem;
-    margin-top: 7%;
+    padding-top: 10%;
     text-align: center;
 }
-v-share h2 {
+v-note_title h2 {
     font-size: 1rem;
- margin-top: 5%;
-    text-align: center;
+ padding-top: 5%;
+ padding-left:5%;
+    text-align: start;
 }
 v-share .note_content {
     font-size: 1rem;
    margin-top: 10%;
+   padding-left: 10%;
+   padding-right: 10%;
 }
 
 v-collaborators {
-display: block;
-    margin-top: 25%;
+    display: block;
+    margin-top: 15%;
     width: 50vw;
     min-width: 50vw;
+    color: rgba(255, 240, 209, 0.4);
+    
+
+}
+v-collaborators v-btn{
+    align-items: center;
+    justify-content: center;
+   margin-left: 5%;
 }
 v-sharetxt {
     display: block;
@@ -107,5 +120,6 @@ v-sharetxt .note_content {
     font-size: 1rem;
     margin-top: 10%;
 }
+
 </style>
 

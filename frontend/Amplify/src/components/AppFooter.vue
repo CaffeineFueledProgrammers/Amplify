@@ -1,5 +1,12 @@
 <template>
   <v-footer height="50vh">
+    <v-amplify_footer class="d-flex justify-start">
+    <v-img height="150px" width="150px" src="@/assets/logo1@2x.png"></v-img>
+    <v-amplify_footertext class="d-flex align-start flex-column">
+    <h1 class="title">Amplify</h1>
+    <h2 class="tagline">Make Powerful Notes</h2>
+    </v-amplify_footertext>
+</v-amplify_footer>
     <a
       v-for="item in items"
       :key="item.title"
@@ -19,7 +26,7 @@
       class="text-caption text-disabled"
       style="position: absolute; right: 16px;"
     >
-      &copy; 2016-{{ (new Date()).getFullYear() }} <span class="d-none d-sm-inline-block">Vuetify, LLC</span>
+      &copy; 2016-{{ (new Date()).getFullYear() }} <span class="d-none d-sm-inline-block">Amplify</span>
       —
       <a
         class="text-decoration-none on-surface"
@@ -76,4 +83,29 @@
 
     &:hover
       color: rgba(25, 118, 210, 1)
+    
+</style>
+<style>
+v-amplify_footer{
+  margin-left:10%;
+  background-image: url();}
+
+v-amplify_footertext{
+  width: 20vh;
+  margin-top: 10%;
+  margin-left: 5%;
+}
+.title{
+  font-size: 1.5rem;
+ font-family: 'Montserrat',sans-serif ;
+  font-weight: bolder;
+  color: #fff;
+  text-align: start;
+}
+.tagline{
+  font-size: 1rem;
+ font-family: 'MuktaVaani',sans-serif ;
+
+    color: #a8a8a8;
+}
 </style>
