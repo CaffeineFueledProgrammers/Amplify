@@ -23,7 +23,7 @@ python manage.py migrate
 # create admin account
 python manage.py createsuperuser
 
-# run the development server
 cd amplify
-python manage.py runserver 0.0.0.0:8080
+export AMPLIFY_SECRET_KEY=$(cat ../secrets.env)  # export the secret key
+python manage.py runserver 0.0.0.0:8080          # run the development server
 ```
