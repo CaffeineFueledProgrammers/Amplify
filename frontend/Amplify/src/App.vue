@@ -1,11 +1,12 @@
-<template>
+<template> 
   <v-app>
-    <v-main>
-      <router-view />
+    <navbar/>
+    <v-main> 
+  
     </v-main>
   </v-app>
 </template>
 
 <script setup>
-  //
+  
 </script>
