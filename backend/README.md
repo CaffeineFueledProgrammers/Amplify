@@ -1,3 +1,3 @@
 # Amplify
 
-This is the backend code for Amplify.
+This directory contains the backend of Amplify.
