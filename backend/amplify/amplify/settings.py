@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 
 # Allowed origins for CORS
 CORS_ALLOWED_ORIGINS = [
-    # TODO: Update this list on production
+    # NOTE: Update this list on production
     "http://localhost:8080",
     "http://127.0.0.1:8080",
     "http://192.168.0.2:8080",  # This is my LAN IP
