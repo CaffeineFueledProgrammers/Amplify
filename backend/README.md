@@ -4,8 +4,8 @@ This directory contains the backend of Amplify.
 
 ## Requirements
 
--   Python 3.12
--   Poetry 1.8.3
+-   Python >= 3.10
+-   Poetry >= 1.8.3
 
 ## Setup
 
