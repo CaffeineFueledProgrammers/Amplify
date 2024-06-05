@@ -24,6 +24,7 @@ python manage.py migrate
 python manage.py createsuperuser
 
 cd amplify
-export AMPLIFY_SECRET_KEY=$(cat ../secrets.env)  # export the secret key
+# This step is not required anymore.
+# export AMPLIFY_SECRET_KEY=$(cat ../secrets.env)  # export the secret key
 python manage.py runserver 0.0.0.0:8080          # run the development server
 ```

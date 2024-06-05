@@ -21,12 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY: str | None = os.getenv("AMPLIFY_SECRET_KEY", None)
+_secret_key: str | None = os.getenv("AMPLIFY_SECRET_KEY", None)
+# fallback to a default secret key for development
+if _secret_key is None:
+    print("AMPLIFY_SECRET_KEY not found, using default secret key")
+    # pylint: disable-next=invalid-name
+    _secret_key = r"UVctiE6-2dVUN/<w%rb-*sBkXZ/7yI?w_(6/gc`U0uiErQ=\Z!"
 
-if SECRET_KEY is None:
-    raise ValueError(
-        "Secret key is not set. Please set the AMPLIFY_SECRET_KEY environment variable."
-    )
+SECRET_KEY = _secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
