@@ -1,6 +1,5 @@
 <template>
-    <v-app>
-        
+    <v-app>        
         <div id="app">
             <h1 class=" d-flex justify-center align-center">Generate Flashcards</h1>
             <v-container>

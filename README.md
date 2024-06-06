@@ -1,4 +1,7 @@
-<h1 align="center">Amplify</h1>
+<div align="center">
+    <img src="https://github.com/CaffeineFueledProgrammers/Amplify/raw/main/frontend/Amplify/src/assets/A.png" alt="Amplify logo" width="128" />
+    <h1>Amplify</h1>
+</div>
 
 <p align="center"><i>AI-Powered Note-Taking for Students.</i></p>
 
@@ -8,7 +11,7 @@
 
 > **Roadmap**
 > 
-> - [ ] Homepage
+> - [X] Homepage
 > - [ ] Login System
 >   - [ ] Sharing/Collaboration System
 >   - [ ] Text/Note Editor

@@ -1,3 +1,5 @@
+backend/secrets.env
+
 #--------------------------------------------------#
 # The following was generated with gitignore.nvim: #
 #--------------------------------------------------#
