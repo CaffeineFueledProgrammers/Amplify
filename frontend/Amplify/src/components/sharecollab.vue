@@ -19,7 +19,7 @@
                             locate specific notes or keywords, making the retrieval of information far
                         </div>
                         <v-collaborators>
-                          
+                      
                                 <v-sheet color="#5e6275" elevation="3" rounded="lg">
                                     <v-tabs
                                         v-model="tab"
@@ -27,7 +27,7 @@
                                         align-tabs="center"
                                         color="white"
                                         height="60"
-                                        slider-color="#f78166"
+                                        slider-color="#0f1322"
                                     >
                                         <template v-slot:tab="{ item }">
                                             <v-tab
@@ -39,10 +39,10 @@
                                         </template>
 
                                         <template v-slot:item="{ item }">
-                                            <v-tabs-window-item :value="item.value" class=" d-flex pa-01 justify-center align-center " style="height:100px;" >
+                                            <v-tabs-window-item :value="item.value" class=" pa-01 justify-center align-center collab_tab " style="height : 150px;" >
                                                 <template v-if="item.value === 'tab-1'" >
-                                                    <!-- Content for tab 1 remains unchanged -->
-                                                    <v-btn class="mr-5">
+                                                  <div class="d-flex justify-center align-center" style="margin-top: 5%;">
+                                                    <v-btn class="mr-5 " >
                                                         <v-icon>mdi-account</v-icon>
                                                         <span>User 1</span>
                                                     </v-btn>
@@ -58,11 +58,12 @@
                                                         <v-icon>mdi-share</v-icon>
                                                         <span>Invite</span>
                                                     </v-btn>
+                                                    </div>
                                                 </template>
                                                 <template v-else>
                                                     <!-- Content for tab 2 (Shared with you) -->
                                                     <v-list>
-                                                        <v-list-item v-for="user in users" :key="user.id">
+                                                        <v-list-item v-for="user in users" :key="user">
                                                             <v-list-item-icon>
                                                                 <v-icon icon="md:folder_open"></v-icon>
                                                             </v-list-item-icon>
@@ -77,7 +78,6 @@
                                         </template>
                                     </v-tabs>
                                 </v-sheet>
-                           
                         </v-collaborators>
                     </v-sheet>
                 </v-note>
@@ -194,10 +194,9 @@ v-sharetxt .note_content {
     font-size: 1.2 rem;
     margin-top: 10%;
 }
+
 .collab:hover {
     color: #71b0e4;
 }
-v-tabs-window-item{
-    
-}
+
 </style>
