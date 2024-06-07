@@ -1,6 +1,7 @@
 <template>
-    <v-app>        
+    <v-app> 
         <div id="app">
+            <img src="@/assets/bg@flash.png" class="bgflash">
             <h1 class=" d-flex justify-center align-center">Generate Flashcards</h1>
             <v-container>
                 <v-row class="justify-center align-center">
@@ -51,19 +52,22 @@ export default {
 
 <style scoped>
 #app {
-    margin-top: 10%;
+    background-color:#131419;
+    height: 100vh;
 }
 #app h1 {
+ 
     font-size: 5rem;
     font-family: "Montserrat", sans-serif;
     font-weight: 800;
     color: #fff;
     text-align: center;
-    margin-bottom:10% ;
+    margin-bottom:5% ; 
+    margin-top: 5%;
 }
 .flashcard {
-    width: 400px;
-    height: 300px;
+    width: 500px;
+    height: 350px;
     perspective: 1000px;
     margin: 10px auto;
 }
@@ -103,5 +107,25 @@ export default {
     font-size: 1rem;
     font-weight: 200;
     font-optical-sizing: auto;
+}
+.bgflash{
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 120%;
+    height: 150%;
+    z-index: 0;
+
+}
+@media screen and (max-width: 600px){
+    .flashcard {
+        width:300px;
+        height: 200px;
+      
+    }
+#app{
+      display: flex;
+        flex-direction: column;
+}
 }
 </style>

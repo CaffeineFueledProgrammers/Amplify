@@ -18,43 +18,73 @@
                             information. Moreover, the powerful search functions in these apps enable users to quickly
                             locate specific notes or keywords, making the retrieval of information far
                         </div>
-                        <v-collaborators
-                            ><h2>Collaborators</h2>
-                            <v-sheet
-                                :elevation="6"
-                                color="rgba(255, 240, 209, 0.4)"
-                                height="200"
-                                class="d-flex align-center justify-center ma-0"
-                            >
-                                <img src="" />
-                                <v-btn>
-                                    <v-icon>mdi-history</v-icon>
+                        <v-collaborators>
+                      
+                                <v-sheet color="#5e6275" elevation="3" rounded="lg">
+                                    <v-tabs
+                                        v-model="tab"
+                                        :items="tabs"
+                                        align-tabs="center"
+                                        color="white"
+                                        height="60"
+                                        slider-color="#0f1322"
+                                    >
+                                        <template v-slot:tab="{ item }">
+                                            <v-tab
+                                                :prepend-icon="item.icon"
+                                                :text="item.text"
+                                                :value="item.value"
+                                                class="text-none"
+                                            ></v-tab>
+                                        </template>
 
-                                    <span>User 1</span>
-                                </v-btn>
-                                <v-btn>
-                                    <v-icon>mdi-heart</v-icon>
-
-                                    <span>User 2</span>
-                                </v-btn>
-                                <v-btn>
-                                    <v-icon>mdi-map-marker</v-icon>
-
-                                    <span>User 3</span>
-                                </v-btn>
-                                <v-btn>
-                                    <v-icon> mdi-share </v-icon>
-
-                                    <span>Invite</span>
-                                </v-btn>
-                            </v-sheet>
+                                        <template v-slot:item="{ item }">
+                                            <v-tabs-window-item :value="item.value" class=" pa-01 justify-center align-center collab_tab " style="height : 150px;" >
+                                                <template v-if="item.value === 'tab-1'" >
+                                                  <div class="d-flex justify-center align-center" style="margin-top: 5%;">
+                                                    <v-btn class="mr-5 " >
+                                                        <v-icon>mdi-account</v-icon>
+                                                        <span>User 1</span>
+                                                    </v-btn>
+                                                    <v-btn class="mr-5">
+                                                        <v-icon>mdi-account</v-icon>
+                                                        <span>User 2</span>
+                                                    </v-btn>
+                                                    <v-btn class="mr-5">
+                                                        <v-icon>mdi-account</v-icon>
+                                                        <span>User 3</span>
+                                                    </v-btn>
+                                                    <v-btn class="mr-5">
+                                                        <v-icon>mdi-share</v-icon>
+                                                        <span>Invite</span>
+                                                    </v-btn>
+                                                    </div>
+                                                </template>
+                                                <template v-else>
+                                                    <!-- Content for tab 2 (Shared with you) -->
+                                                    <v-list>
+                                                        <v-list-item v-for="user in users" :key="user">
+                                                            <v-list-item-icon>
+                                                                <v-icon icon="md:folder_open"></v-icon>
+                                                            </v-list-item-icon>
+                                                            <v-list-item-content>
+                                                                <v-list-item-title>{{ user.name }}</v-list-item-title>
+                                                            </v-list-item-content>
+                                                        </v-list-item>
+                                                        <v-list-item> </v-list-item>
+                                                    </v-list>
+                                                </template>
+                                            </v-tabs-window-item>
+                                        </template>
+                                    </v-tabs>
+                                </v-sheet>
                         </v-collaborators>
                     </v-sheet>
                 </v-note>
                 <v-sharetxt class="d-flex flex-column">
                     <div class="share_title">
                         <h1>Sharing</h1>
-                        <h1>Collaboration</h1>
+                        <h1 class="collab">Collaboration</h1>
                         <h1>System</h1>
                     </div>
                     <div class="note_content">
@@ -68,14 +98,38 @@
         <AppFooter />
     </v-app>
 </template>
+<script>
 
+export default {
+    data: () => ({
+        tab: "tab-1",
+        tabs: [
+            {
+                icon: "mdi-book-open-page-variant",
+                text: "COLLABORATION",
+                value: "tab-1",
+            },
+            {
+                icon: "mdi-handshake-outline",
+                text: "SHARED WITH YOU",
+                value: "tab-2",
+            },
+        ],
+        users: [
+            { id: 1, name: "NOTE 05/24/24" },
+            { id: 2, name: "NOTE 05/28/24" },
+            { id: 3, name: "NOTE 06/03/24" },
+        ],
+    }),
+};
+</script>
 <style>
 v-note {
     display: block;
     width: 50vw;
     max-width: 50vw;
     color: #1e1e24;
-    opacity: 0.7;
+    opacity: 0.5;
 }
 v-note_title h1 {
     font-size: 1.5rem;
@@ -88,7 +142,7 @@ v-note_title h2 {
     padding-left: 5%;
     text-align: start;
 }
-v-share .note_content {
+v-note .note_content {
     font-size: 1rem;
     margin-top: 10%;
     padding-left: 10%;
@@ -99,26 +153,45 @@ v-collaborators {
     margin-top: 15%;
     width: 50vw;
     min-width: 50vw;
-    color: rgba(255, 240, 209, 0.4);
+    color: #5e6275;
+}
+v-collaborators h2 {
+    position: relative;
+    top: 5px;
+    color: #1e1e24;
+    font-size: 1.2rem;
+    font-family: "Montserrat", sans-serif;
+    text-align: center;
+    width: 25%;
+    background-color: #5e6275;
+    border-radius: 10%;
 }
 v-collaborators v-btn {
     align-items: center;
     justify-content: center;
-    margin-left: 5%;
+    padding-left: 50%;
+    margin-right: 50%;
 }
 v-sharetxt {
     display: block;
     width: 40vw;
     min-width: 40vw;
     margin-left: 5%;
-    align-self: center;
+    margin-top: 5%;
 }
 v-sharetxt h1 {
-    font-size: 3rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
     text-align: start;
+    position: relative;
 }
 v-sharetxt .note_content {
-    font-size: 1rem;
+    font-family: "MuktaVaani", sans-serif;
+    font-size: 1.2 rem;
     margin-top: 10%;
+}
+.collab:hover {
+    color: #71b0e4;
 }
 </style>
