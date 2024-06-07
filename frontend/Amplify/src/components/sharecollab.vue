@@ -128,7 +128,6 @@ v-note {
     display: block;
     width: 50vw;
     max-width: 50vw;
-
     color: #1e1e24;
     opacity: 0.5;
 }
@@ -149,7 +148,6 @@ v-note .note_content {
     padding-left: 10%;
     padding-right: 10%;
 }
-
 v-collaborators {
     display: block;
     margin-top: 15%;
@@ -181,7 +179,6 @@ v-sharetxt {
     margin-left: 5%;
     margin-top: 5%;
 }
-
 v-sharetxt h1 {
     font-family: "Montserrat", sans-serif;
     font-size: 4rem;
@@ -194,9 +191,7 @@ v-sharetxt .note_content {
     font-size: 1.2 rem;
     margin-top: 10%;
 }
-
 .collab:hover {
     color: #71b0e4;
 }
-
 </style>

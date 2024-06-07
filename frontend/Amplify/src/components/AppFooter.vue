@@ -55,18 +55,16 @@ v-amplify_footertext{
   margin-left: 5%;
   margin-bottom:10%;
 }
-.title{
-  font-size: 1.5rem;
- font-family: 'Montserrat',sans-serif ;
-  font-weight: bolder;
-  color: #fff;
-  text-align: start;
+.title {
+    font-size: 1.5rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bolder;
+    color: #fff;
+    text-align: start;
 }
-.tagline{
-  font-size: 1rem;
- font-family: 'MuktaVaani',sans-serif ;
-
+.tagline {
+    font-size: 1rem;
+    font-family: "MuktaVaani", sans-serif;
     color: #a8a8a8;
 }
-
 </style>
