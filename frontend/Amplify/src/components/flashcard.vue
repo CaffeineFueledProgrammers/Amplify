@@ -3,8 +3,8 @@
         <div id="app">
             <img src="@/assets/bg@flash.png" class="bgflash">
             <h1 class=" d-flex justify-center align-center">Generate Flashcards</h1>
-            <v-container>
-                <v-row class="justify-center align-center">
+            <v-container class="flash" >
+                <v-row class=" d-flex justify-center align-center"  data-aos="fade-up"  data-aos-once="false" data-aos-duration="1000" >
                     <v-col v-for="(flashcard, index) in flashcards" :key="index" cols="2" md="6">
                         <div class="flashcard" @mouseover="flipCard(index)" @mouseleave="flipCard(index)">
                             <div class="card-inner" :class="{ flipped: flashcard.flipped }">
@@ -24,7 +24,18 @@
 </template>
 
 <script>
+
+    import { onMounted } from 'vue';
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 export default {
+  name: 'App',
+  setup() {
+    onMounted(() => {
+      AOS.init();
+    });
+  },
+  
     name: "App",
     data() {
         return {
@@ -48,6 +59,9 @@ export default {
         },
     },
 };
+
+
+
 </script>
 
 <style scoped>
@@ -117,13 +131,13 @@ export default {
     z-index: 0;
 
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 800px){
     .flashcard {
         width:300px;
         height: 200px;
       
     }
-#app{
+.flash{
       display: flex;
         flex-direction: column;
 }

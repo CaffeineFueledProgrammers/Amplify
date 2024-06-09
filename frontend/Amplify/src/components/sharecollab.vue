@@ -2,8 +2,8 @@
     <v-app>
         <v-main>
             <v-share class="d-flex flex pa-3 ma-2">
-                <v-note>
-                    <v-sheet rounded="rounded" class="mx-auto block justify-start align-start opacity-0.5">
+                <v-note   data-aos="fade-right"  data-aos-delay="200" data-aos-once="false"  data-aos-duration="1000" >
+                    <v-sheet rounded="rounded" class="mx-auto block justify-start align-start opacity-0.5" >
                         <v-note_title>
                             <h2>NOTE</h2>
                             <h1>ADVANTAGE OF DIGITAL NOTE TAKING</h1>
@@ -121,15 +121,18 @@ export default {
             { id: 3, name: "NOTE 06/03/24" },
         ],
     }),
-};
+
+};   
+
 </script>
+
 <style>
 v-note {
     display: block;
-    width: 50vw;
-    max-width: 50vw;
-    color: #1e1e24;
-    opacity: 0.5;
+    width: 40vw;
+    max-width: 40vw;
+    color: #16171b;
+  
 }
 v-note_title h1 {
     font-size: 1.5rem;
@@ -151,8 +154,8 @@ v-note .note_content {
 v-collaborators {
     display: block;
     margin-top: 15%;
-    width: 50vw;
-    min-width: 50vw;
+    width: 40vw;
+    min-width: 40vw;
     color: #5e6275;
 }
 v-collaborators h2 {

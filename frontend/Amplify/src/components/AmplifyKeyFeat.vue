@@ -4,16 +4,16 @@
             <img class="smoke_keyfeat" src="@/assets/smoke@2x.png" height="1000" />
             <v-keyfeat class="d-flex align-center flex-column">
                 <v-keyfeat_title class="d-flex justify-center">
-                    <img  src="@/assets/A.png" alt="Amplify Logo" class="logo" />
-                    <v-keyfeattxt class="d-flex align-center flex-column">
+                    <img  src="@/assets/A.png" alt="Amplify Logo" class="logo"/>
+                    <v-keyfeattxt class="d-flex align-center flex-column" data-aos="fade-up"  data-aos-delay="500" data-aos-once="false"  data-aos-duration="1000">
                         <v-keyfeattxt2 class="d-flex align-center">
                             <div class="mplify">MPLIFY</div>
                             <div class="keyfeatures">Key Features</div>
                         </v-keyfeattxt2>
                         <b class="download_now">LEARN MORE</b>
                     </v-keyfeattxt>
-                </v-keyfeat_title>
-                <div class="d-flex align-center justify-center">
+                </v-keyfeat_title >
+                <div class="d-flex align-center justify-center"  data-aos="fade-up"  data-aos-once="false"  data-aos-duration="1000">
                     <v-row class="keyfeat_items">
                         <v-col order="1">
                             <div class="d-flex align-center justify-center flex-column pa-2 ma-2">
@@ -49,6 +49,10 @@
         </v-main>
     </v-app>
 </template>
+<script>
+
+</script>
+
 
 <style>
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;800;900&display=swap);
@@ -104,4 +108,7 @@ main {
 .download_now:hover {
     color: #71b0e4;
 }
+
+
+
 </style>
