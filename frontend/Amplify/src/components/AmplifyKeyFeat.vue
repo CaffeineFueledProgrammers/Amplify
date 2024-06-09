@@ -4,13 +4,13 @@
             <img class="smoke_keyfeat" src="@/assets/smoke@2x.png" height="1000" />
             <v-keyfeat class="d-flex align-center flex-column">
                 <v-keyfeat_title class="d-flex justify-center">
-                    <img src="@/assets/A.png" alt="Amplify Logo" class="logo" />
+                    <img  src="@/assets/A.png" alt="Amplify Logo" class="logo" />
                     <v-keyfeattxt class="d-flex align-center flex-column">
                         <v-keyfeattxt2 class="d-flex align-center">
                             <div class="mplify">MPLIFY</div>
                             <div class="keyfeatures">Key Features</div>
                         </v-keyfeattxt2>
-                        <b class="download_now">DOWNLOAD NOW</b>
+                        <b class="download_now">LEARN MORE</b>
                     </v-keyfeattxt>
                 </v-keyfeat_title>
                 <div class="d-flex align-center justify-center">

@@ -1,11 +1,11 @@
 <template>
-            <v-app-bar height="90">
-                <img class="navlogo" src="@/assets/logo1@2x.png" alt="logo" width="80" height="80">
-                <v-spacer></v-spacer>
-                <v-btn class="button">Home</v-btn>
-                <router-link :to="{ path: 'you path(/shop/customer/login)' }"><v-btn class="button">Log In</v-btn></router-link>
-                <v-btn class="button">Sign Up</v-btn>
-            </v-app-bar>
+    <v-app-bar height="90">
+        <img class="navlogo" src="@/assets/logo1@2x.png" alt="logo" width="80" height="80" />
+        <v-spacer></v-spacer>
+        <router-link :to="{ path: '/' }"><v-btn class="button">Home</v-btn></router-link>
+        <router-link :to="{ path: '/login' }"><v-btn class="button">Log In</v-btn></router-link>
+        <v-btn @click="goToSignUp"  class="button">Sign Up</v-btn>
+    </v-app-bar>
 </template>
 
 <style>
@@ -33,4 +33,14 @@ v-app-bar {
 }
 </style>
 
-<script setup></script>
+<script>
+
+export default {
+  methods: {
+    goToSignUp() {
+      this.$router.push({ path: '/login', query: { section: 'signup' } });
+    }
+  }
+}
+</script>
+    

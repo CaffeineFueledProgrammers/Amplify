@@ -1,4 +1,6 @@
 <template>
+<v-app>
+    <v-main>
     <v-container>
         <v-row align="center" justify="center">
             <v-col cols="12" sm="10">
@@ -73,7 +75,7 @@
                                 </v-col>
                             </v-row>
                         </v-window-item>
-                        <v-window-item :value="2">
+                        <v-window-item :value="2" id="target-component">
                             <v-row>
                                 <v-col cols="12" md="6" class="blue rounded-br-xl">
                                     <div style="text-align: center; padding: 180px 0">
@@ -170,17 +172,27 @@
             </v-col>
         </v-row>
     </v-container>
+    </v-main>
+</v-app>
 </template>
 
 <script>
 export default {
-    data: () => ({
-        step: 1,
-    }),
+
+  data: () => ({
+    step: 1,
+  }),
+  mounted() {
+    if (this.$route.query.section === 'signup') {
+      this.step = 2;
+    }
+  },
+
     props: {
         source: String,
     },
 };
+
 </script>
 <style scoped>
 .v-application .rounded-bl-xl {

@@ -110,10 +110,10 @@ export default {
 }
 .bgflash{
     position: absolute;
-    top: -50%;
+    top: -20%;
     right: -20%;
-    width: 120%;
-    height: 150%;
+    width: 100%;
+    height: 100%;
     z-index: 0;
 
 }

@@ -2,11 +2,8 @@
     <v-app>
         <navbar />
         <v-main>
-            <home />
-            <AmplifyKeyFeat />
-            <AiProcess />
-            <flashcard />
-            <sharecollab />
+     <router-view></router-view>
+     <router-link></router-link>
         </v-main>
     </v-app>
 </template>
