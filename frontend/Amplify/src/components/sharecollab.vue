@@ -2,7 +2,7 @@
     <v-app>
         <v-main>
             <v-share class="d-flex flex pa-3 ma-2">
-                <v-note>
+                <v-note data-aos="fade-right" data-aos-delay="200" data-aos-once="false" data-aos-duration="1000">
                     <v-sheet rounded="rounded" class="mx-auto block justify-start align-start opacity-0.5">
                         <v-note_title>
                             <h2>NOTE</h2>
@@ -19,30 +19,33 @@
                             locate specific notes or keywords, making the retrieval of information far
                         </div>
                         <v-collaborators>
-                      
-                                <v-sheet color="#5e6275" elevation="3" rounded="lg">
-                                    <v-tabs
-                                        v-model="tab"
-                                        :items="tabs"
-                                        align-tabs="center"
-                                        color="white"
-                                        height="60"
-                                        slider-color="#0f1322"
-                                    >
-                                        <template v-slot:tab="{ item }">
-                                            <v-tab
-                                                :prepend-icon="item.icon"
-                                                :text="item.text"
-                                                :value="item.value"
-                                                class="text-none"
-                                            ></v-tab>
-                                        </template>
+                            <v-sheet color="#5e6275" elevation="3" rounded="lg">
+                                <v-tabs
+                                    v-model="tab"
+                                    :items="tabs"
+                                    align-tabs="center"
+                                    color="white"
+                                    height="60"
+                                    slider-color="#0f1322"
+                                >
+                                    <template v-slot:tab="{ item }">
+                                        <v-tab
+                                            :prepend-icon="item.icon"
+                                            :text="item.text"
+                                            :value="item.value"
+                                            class="text-none"
+                                        ></v-tab>
+                                    </template>
 
-                                        <template v-slot:item="{ item }">
-                                            <v-tabs-window-item :value="item.value" class=" pa-01 justify-center align-center collab_tab " style="height : 150px;" >
-                                                <template v-if="item.value === 'tab-1'" >
-                                                  <div class="d-flex justify-center align-center" style="margin-top: 5%;">
-                                                    <v-btn class="mr-5 " >
+                                    <template v-slot:item="{ item }">
+                                        <v-tabs-window-item
+                                            :value="item.value"
+                                            class="pa-01 justify-center align-center collab_tab"
+                                            style="height: 150px"
+                                        >
+                                            <template v-if="item.value === 'tab-1'">
+                                                <div class="d-flex justify-center align-center" style="margin-top: 5%">
+                                                    <v-btn class="mr-5">
                                                         <v-icon>mdi-account</v-icon>
                                                         <span>User 1</span>
                                                     </v-btn>
@@ -58,26 +61,26 @@
                                                         <v-icon>mdi-share</v-icon>
                                                         <span>Invite</span>
                                                     </v-btn>
-                                                    </div>
-                                                </template>
-                                                <template v-else>
-                                                    <!-- Content for tab 2 (Shared with you) -->
-                                                    <v-list>
-                                                        <v-list-item v-for="user in users" :key="user">
-                                                            <v-list-item-icon>
-                                                                <v-icon icon="md:folder_open"></v-icon>
-                                                            </v-list-item-icon>
-                                                            <v-list-item-content>
-                                                                <v-list-item-title>{{ user.name }}</v-list-item-title>
-                                                            </v-list-item-content>
-                                                        </v-list-item>
-                                                        <v-list-item> </v-list-item>
-                                                    </v-list>
-                                                </template>
-                                            </v-tabs-window-item>
-                                        </template>
-                                    </v-tabs>
-                                </v-sheet>
+                                                </div>
+                                            </template>
+                                            <template v-else>
+                                                <!-- Content for tab 2 (Shared with you) -->
+                                                <v-list>
+                                                    <v-list-item v-for="user in users" :key="user">
+                                                        <v-list-item-icon>
+                                                            <v-icon icon="md:folder_open"></v-icon>
+                                                        </v-list-item-icon>
+                                                        <v-list-item-content>
+                                                            <v-list-item-title>{{ user.name }}</v-list-item-title>
+                                                        </v-list-item-content>
+                                                    </v-list-item>
+                                                    <v-list-item> </v-list-item>
+                                                </v-list>
+                                            </template>
+                                        </v-tabs-window-item>
+                                    </template>
+                                </v-tabs>
+                            </v-sheet>
                         </v-collaborators>
                     </v-sheet>
                 </v-note>
@@ -99,7 +102,6 @@
     </v-app>
 </template>
 <script>
-
 export default {
     data: () => ({
         tab: "tab-1",
@@ -123,13 +125,13 @@ export default {
     }),
 };
 </script>
+
 <style>
 v-note {
     display: block;
-    width: 50vw;
-    max-width: 50vw;
-    color: #1e1e24;
-    opacity: 0.5;
+    width: 40vw;
+    max-width: 40vw;
+    color: #16171b;
 }
 v-note_title h1 {
     font-size: 1.5rem;
@@ -151,8 +153,8 @@ v-note .note_content {
 v-collaborators {
     display: block;
     margin-top: 15%;
-    width: 50vw;
-    min-width: 50vw;
+    width: 40vw;
+    min-width: 40vw;
     color: #5e6275;
 }
 v-collaborators h2 {

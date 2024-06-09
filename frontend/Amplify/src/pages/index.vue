@@ -1,5 +1,11 @@
 <template>
-    <v-app></v-app>
+    <v-app>
+        <home />
+        <AmplifyKeyFeat />
+        <AiProcess />
+        <flashcard />
+        <sharecollab />
+    </v-app>
 </template>
 
 <script setup></script>

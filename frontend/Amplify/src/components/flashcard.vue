@@ -1,10 +1,15 @@
 <template>
-    <v-app> 
+    <v-app>
         <div id="app">
-            <img src="@/assets/bg@flash.png" class="bgflash">
-            <h1 class=" d-flex justify-center align-center">Generate Flashcards</h1>
-            <v-container>
-                <v-row class="justify-center align-center">
+            <img src="@/assets/bg@flash.png" class="bgflash" />
+            <h1 class="d-flex justify-center align-center">Generate Flashcards</h1>
+            <v-container class="flash">
+                <v-row
+                    class="d-flex justify-center align-center"
+                    data-aos="fade-up"
+                    data-aos-once="false"
+                    data-aos-duration="1000"
+                >
                     <v-col v-for="(flashcard, index) in flashcards" :key="index" cols="2" md="6">
                         <div class="flashcard" @mouseover="flipCard(index)" @mouseleave="flipCard(index)">
                             <div class="card-inner" :class="{ flipped: flashcard.flipped }">
@@ -24,7 +29,17 @@
 </template>
 
 <script>
+import { onMounted } from "vue";
+import AOS from "aos";
+import "aos/dist/aos.css";
 export default {
+    name: "App",
+    setup() {
+        onMounted(() => {
+            AOS.init();
+        });
+    },
+
     name: "App",
     data() {
         return {
@@ -52,17 +67,16 @@ export default {
 
 <style scoped>
 #app {
-    background-color:#131419;
+    background-color: #131419;
     height: 100vh;
 }
 #app h1 {
- 
     font-size: 5rem;
     font-family: "Montserrat", sans-serif;
     font-weight: 800;
     color: #fff;
     text-align: center;
-    margin-bottom:5% ; 
+    margin-bottom: 5%;
     margin-top: 5%;
 }
 .flashcard {
@@ -108,24 +122,22 @@ export default {
     font-weight: 200;
     font-optical-sizing: auto;
 }
-.bgflash{
+.bgflash {
     position: absolute;
-    top: -50%;
+    top: -20%;
     right: -20%;
-    width: 120%;
-    height: 150%;
+    width: 100%;
+    height: 100%;
     z-index: 0;
-
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 800px) {
     .flashcard {
-        width:300px;
+        width: 300px;
         height: 200px;
-      
     }
-#app{
-      display: flex;
+    .flash {
+        display: flex;
         flex-direction: column;
-}
+    }
 }
 </style>
