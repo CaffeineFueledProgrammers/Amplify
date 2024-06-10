@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "amplify-backend"
+name = "amplify_backend"
 version = "0.1.0"
 description = "AI-Powered Note-Taking for Students."
 authors = ["chris1320 <chris1320is@protonmail.com>"]
