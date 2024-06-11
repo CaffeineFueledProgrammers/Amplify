@@ -6,7 +6,9 @@ This module contains all the routes for the Flask app.
 
 from flask import Flask
 
-flask_app = Flask(__name__)
+from amplify_backend.config import BaseConfig
+
+flask_app = Flask(BaseConfig.NAME)
 
 
 @flask_app.route("/")
