@@ -80,4 +80,64 @@ v-iptxt h1 {
     font-family: "Montserrat", sans-serif;
     font-weight: 900;
 }
+@media screen and (max-width: 800px) {
+    v-iptxt img {
+        width: 200px;
+        height: 200px;
+    }
+
+    v-iptxt h1 {
+        font-size: 2rem;
+        left: 0;
+    }
+
+    .v-card {
+        width: 80vw;
+    }
+    .v-card img{
+     
+        height: 0px;
+    }
+
+    v-aiprocess {
+        flex-direction: column;
+    }
+v-card-title {
+    font-size: 1rem;
+
+}
+v-card-subtitle {
+    font-size: 0.5rem;
+
+} 
+}
+
+@media screen and (min-width: 800px) and (max-width: 1000px) {
+    v-iptxt img {
+        width: 20vw;
+        height: 20vw;
+    }
+
+    v-iptxt h1 {
+        font-size: 4rem;
+        left: -3%;
+    }
+
+    .v-card {
+        width: 23vw;
+        max-height: 45vh;
+    }
+    v-card-title {
+    font-size: 1rem;
+
+}
+v-card-subtitle {
+    font-size: 0.5rem;
+
+}
+.v-card img{
+    width: 200px;
+    height: 100px;
+}
+}
 </style>

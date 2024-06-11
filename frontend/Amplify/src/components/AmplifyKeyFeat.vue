@@ -57,8 +57,8 @@
 @import url(https://fonts.googleapis.com/css2?family=HindGuntur:wght@400;700&display=swap);
 
 main {
- 
-    max-height: 100vh;
+     min-width: 100vw;
+    min-height: 100vh;
     background-color: #131419;
 }
 .smoke_keyfeat {
