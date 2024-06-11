@@ -1,3 +1,9 @@
+"""
+Amplify - AI-Powered Note-Taking for Students
+
+Get the Flask app
+"""
+
 from flask import Flask
 
 from amplify_backend.config import BaseConfig

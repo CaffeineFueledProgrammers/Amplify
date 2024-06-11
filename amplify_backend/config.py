@@ -1,4 +1,6 @@
 """
+Amplify - AI-Powered Note-Taking for Students
+
 This file is used to store all the configuration
 variables that are used in the application.
 """
