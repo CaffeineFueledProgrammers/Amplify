@@ -44,9 +44,7 @@
         </v-main>
     </v-app>
 </template>
-<script>
-
-</script>
+<script></script>
 
 <style>
 v-card-title {

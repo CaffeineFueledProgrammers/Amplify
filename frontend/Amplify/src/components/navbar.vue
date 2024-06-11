@@ -4,7 +4,7 @@
         <v-spacer></v-spacer>
         <router-link :to="{ path: '/' }"><v-btn class="button">Home</v-btn></router-link>
         <router-link :to="{ path: '/login' }"><v-btn class="button">Log In</v-btn></router-link>
-        <v-btn @click="goToSignUp"  class="button">Sign Up</v-btn>
+        <v-btn @click="goToSignUp" class="button">Sign Up</v-btn>
     </v-app-bar>
 </template>
 
@@ -34,13 +34,12 @@ v-app-bar {
 </style>
 
 <script>
-
 export default {
-  methods: {
-    goToSignUp() {
-      this.$router.push({ path: '/login', query: { section: 'signup' } });
-    }
-  }
-}
+    methods: {
+        goToSignUp() {
+            this.$router.push({ path: "/login", query: { section: "signup" } });
+        },
+    },
+};
 </script>
-    
+

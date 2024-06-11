@@ -49,10 +49,7 @@
         </v-main>
     </v-app>
 </template>
-<script>
-
-</script>
-
+<script></script>
 
 <style>
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;800;900&display=swap);
@@ -108,7 +105,4 @@ main {
 .download_now:hover {
     color: #71b0e4;
 }
-
-
-
 </style>

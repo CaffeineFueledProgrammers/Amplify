@@ -31,30 +31,33 @@
                             locate specific notes or keywords, making the retrieval of information far
                         </div>
                         <v-collaborators>
-                      
-                                <v-sheet color="#5e6275" elevation="3" rounded="lg">
-                                    <v-tabs
-                                        v-model="tab"
-                                        :items="tabs"
-                                        align-tabs="center"
-                                        color="white"
-                                        height="60"
-                                        slider-color="#0f1322"
-                                    >
-                                        <template v-slot:tab="{ item }">
-                                            <v-tab
-                                                :prepend-icon="item.icon"
-                                                :text="item.text"
-                                                :value="item.value"
-                                                class="text-none"
-                                            ></v-tab>
-                                        </template>
+                            <v-sheet color="#5e6275" elevation="3" rounded="lg">
+                                <v-tabs
+                                    v-model="tab"
+                                    :items="tabs"
+                                    align-tabs="center"
+                                    color="white"
+                                    height="60"
+                                    slider-color="#0f1322"
+                                >
+                                    <template v-slot:tab="{ item }">
+                                        <v-tab
+                                            :prepend-icon="item.icon"
+                                            :text="item.text"
+                                            :value="item.value"
+                                            class="text-none"
+                                        ></v-tab>
+                                    </template>
 
-                                        <template v-slot:item="{ item }">
-                                            <v-tabs-window-item :value="item.value" class=" pa-01 justify-center align-center collab_tab " style="height : 150px;" >
-                                                <template v-if="item.value === 'tab-1'" >
-                                                  <div class="d-flex justify-center align-center" style="margin-top: 5%;">
-                                                    <v-btn class="mr-5 " >
+                                    <template v-slot:item="{ item }">
+                                        <v-tabs-window-item
+                                            :value="item.value"
+                                            class="pa-01 justify-center align-center collab_tab"
+                                            style="height: 150px"
+                                        >
+                                            <template v-if="item.value === 'tab-1'">
+                                                <div class="d-flex justify-center align-center" style="margin-top: 5%">
+                                                    <v-btn class="mr-5">
                                                         <v-icon>mdi-account</v-icon>
                                                         <span>User 1</span>
                                                     </v-btn>
@@ -70,26 +73,26 @@
                                                         <v-icon>mdi-share</v-icon>
                                                         <span>Invite</span>
                                                     </v-btn>
-                                                    </div>
-                                                </template>
-                                                <template v-else>
-                                                    <!-- Content for tab 2 (Shared with you) -->
-                                                    <v-list>
-                                                        <v-list-item v-for="user in users" :key="user">
-                                                            <v-list-item-icon>
-                                                                <v-icon icon="md:folder_open"></v-icon>
-                                                            </v-list-item-icon>
-                                                            <v-list-item-content>
-                                                                <v-list-item-title>{{ user.name }}</v-list-item-title>
-                                                            </v-list-item-content>
-                                                        </v-list-item>
-                                                        <v-list-item> </v-list-item>
-                                                    </v-list>
-                                                </template>
-                                            </v-tabs-window-item>
-                                        </template>
-                                    </v-tabs>
-                                </v-sheet>
+                                                </div>
+                                            </template>
+                                            <template v-else>
+                                                <!-- Content for tab 2 (Shared with you) -->
+                                                <v-list>
+                                                    <v-list-item v-for="user in users" :key="user">
+                                                        <v-list-item-icon>
+                                                            <v-icon icon="md:folder_open"></v-icon>
+                                                        </v-list-item-icon>
+                                                        <v-list-item-content>
+                                                            <v-list-item-title>{{ user.name }}</v-list-item-title>
+                                                        </v-list-item-content>
+                                                    </v-list-item>
+                                                    <v-list-item> </v-list-item>
+                                                </v-list>
+                                            </template>
+                                        </v-tabs-window-item>
+                                    </template>
+                                </v-tabs>
+                            </v-sheet>
                         </v-collaborators>
                     </v-sheet>
                 </v-note>
@@ -100,7 +103,6 @@
     </v-app>
 </template>
 <script>
-
 export default {
     data: () => ({
         tab: "tab-1",
@@ -122,9 +124,7 @@ export default {
             { id: 3, name: "NOTE 06/03/24" },
         ],
     }),
-
-};   
-
+};
 </script>
 
 <style>
@@ -134,7 +134,6 @@ v-note {
     max-width: 40vw;
     margin-left:10% ;
     color: #16171b;
-  
 }
 v-note_title h1 {
     font-size: 1.5rem;

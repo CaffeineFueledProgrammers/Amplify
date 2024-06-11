@@ -20,12 +20,10 @@ jobs:
                   python-version: ${{ matrix.python-version }}
 
             - name: Install dependencies
-              working-directory: ./backend
               run: |
                   pip install --upgrade poetry
                   poetry install
 
             - name: Analysing the code with pylint
-              working-directory: ./backend
               run: |
-                  poetry run pylint $(git ls-files '*.py')
+                  poetry run pylint "./amplify_backend"
