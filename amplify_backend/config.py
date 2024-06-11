@@ -17,6 +17,7 @@ class BaseConfig:  # pylint: disable=too-few-public-methods,missing-class-docstr
 
     # Flask configuration
     NAME = "Amplify"
+    STATIC_DIR = "./amplify_frontend/dist"  # NOTE: Is this the right place?
 
 
 class DevConfig(

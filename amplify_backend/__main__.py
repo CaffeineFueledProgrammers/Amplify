@@ -5,7 +5,7 @@ Amplify - AI-Powered Note-Taking for Students
 import argparse
 
 from amplify_backend import config
-from amplify_backend.routes import get_app
+from amplify_backend.routes import get_app_with_routes
 
 
 def main():
@@ -38,7 +38,7 @@ def main():
         case _:  # pyright: ignore[reportAny]
             raise ValueError(f"Invalid mode: {args.mode}")  # pyright: ignore[reportAny]
 
-    flask_app = get_app()
+    flask_app = get_app_with_routes()
     flask_app.run(host=mode_config.HOST, port=mode_config.PORT, debug=mode_config.DEBUG)
 
 
