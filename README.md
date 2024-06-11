@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://github.com/CaffeineFueledProgrammers/Amplify/raw/main/frontend/Amplify/src/assets/A.png" alt="Amplify logo" width="128" />
+    <img src="https://github.com/CaffeineFueledProgrammers/Amplify/raw/main/amplify_frontend/src/assets/A.png" alt="Amplify logo" width="128" />
     <h1>Amplify</h1>
 </div>
 
