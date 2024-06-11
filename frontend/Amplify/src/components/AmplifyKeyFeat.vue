@@ -5,7 +5,7 @@
             <v-keyfeat class="d-flex align-center flex-column">
                 <v-keyfeat_title class="d-flex justify-center">
                     <img  src="@/assets/A.png" alt="Amplify Logo" class="logo"/>
-                    <v-keyfeattxt class="d-flex align-center flex-column" data-aos="fade-up"  data-aos-delay="500" data-aos-once="false"  data-aos-duration="1000">
+                    <v-keyfeattxt class="d-flex align-center flex-column" data-aos="fade-up"  data-aos-once="false"  data-aos-duration="500">
                         <v-keyfeattxt2 class="d-flex align-center">
                             <div class="mplify">MPLIFY</div>
                             <div class="keyfeatures">Key Features</div>
@@ -13,7 +13,7 @@
                         <b class="download_now">LEARN MORE</b>
                     </v-keyfeattxt>
                 </v-keyfeat_title >
-                <div class="d-flex align-center justify-center"  data-aos="fade-up"  data-aos-once="false"  data-aos-duration="1000">
+                <div class="d-flex align-center justify-center"  data-aos="fade-up"  data-aos-once="false"  data-aos-duration="500">
                     <v-row class="keyfeat_items">
                         <v-col order="1">
                             <div class="d-flex align-center justify-center flex-column pa-2 ma-2">
@@ -60,7 +60,7 @@
 @import url(https://fonts.googleapis.com/css2?family=HindGuntur:wght@400;700&display=swap);
 
 main {
-    min-width: 100vw;
+ 
     max-height: 100vh;
     background-color: #131419;
 }

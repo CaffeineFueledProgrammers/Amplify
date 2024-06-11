@@ -4,8 +4,8 @@
             <img src="@/assets/bg@flash.png" class="bgflash">
             <h1 class=" d-flex justify-center align-center">Generate Flashcards</h1>
             <v-container class="flash" >
-                <v-row class=" d-flex justify-center align-center"  data-aos="fade-up"  data-aos-once="false" data-aos-duration="1000" >
-                    <v-col v-for="(flashcard, index) in flashcards" :key="index" cols="2" md="6">
+                <v-row class=" d-flex justify-center align-center"  data-aos="fade-up"  data-aos-once="false" data-aos-duration="500" >
+                    <v-col v-for="(flashcard, index) in flashcards" :key="index" cols="12" md="6">
                         <div class="flashcard" @mouseover="flipCard(index)" @mouseleave="flipCard(index)">
                             <div class="card-inner" :class="{ flipped: flashcard.flipped }">
                                 <div class="card-front">
@@ -80,8 +80,8 @@ export default {
     margin-top: 5%;
 }
 .flashcard {
-    width: 500px;
-    height: 350px;
+    width: 35vw;
+    height: 40vh;
     perspective: 1000px;
     margin: 10px auto;
 }
@@ -133,13 +133,32 @@ export default {
 }
 @media screen and (max-width: 800px){
     .flashcard {
-        width:300px;
-        height: 200px;
+        width:80vw;
+        height: 30vh;
       
     }
 .flash{
-      display: flex;
+      
         flex-direction: column;
 }
+#app h1 {
+ 
+    font-size: 3rem;
+    flex-direction: column;}
 }
+
+    
+@media screen  and (min-width: 800px) and (max-width: 1000px) {
+    .flashcard {
+        width:40vw;
+        height: 30vh;
+      
+    }
+
+#app h1 {
+ 
+    font-size: 3rem;
+    flex-direction: column;}
+}
+
 </style>

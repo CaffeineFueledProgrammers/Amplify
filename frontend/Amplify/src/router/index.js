@@ -16,7 +16,8 @@ const router = createRouter({
 const routes = [
     { path: "/", component: index },
     { path: "/login", component: login }
-    
+ 
+       
 ];
 
 

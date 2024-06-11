@@ -5,7 +5,7 @@
                 <img height="400px" width="400px" src="@/assets/feather@2x.png" />
                 <h1>I Process</h1>
             </v-iptxt>
-            <v-aiprocess class="d-flex align-center justify-center"  data-aos="fade-up"  data-aos-delay="200" data-aos-once="false"  data-aos-duration="1000">
+            <v-aiprocess class="d-flex align-center justify-center"  data-aos="fade-up"   data-aos-once="false"  data-aos-duration="500">
                 <v-card class="mx-auto" height="400" max-width="350" color="#1e1e24" hover>
                     <v-card-item>
                         <v-card-title> Grammar Checking </v-card-title>
