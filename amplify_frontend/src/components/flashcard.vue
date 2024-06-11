@@ -4,8 +4,8 @@
             <img src="@/assets/bg@flash.png" class="bgflash">
             <h1 class=" d-flex justify-center align-center">Generate Flashcards</h1>
             <v-container class="flash" >
-                <v-row class=" d-flex justify-center align-center"  data-aos="fade-up"  data-aos-once="false" data-aos-duration="500" >
-                    <v-col v-for="(flashcard, index) in flashcards" :key="index" cols="12" md="6">
+                <v-row class=" d-flex justify-center align-center ml-5"  data-aos="fade-up"  data-aos-once="false" data-aos-duration="500" >
+                    <v-col v-for="(flashcard, index) in flashcards" :key="index" cols="16" md="6">
                         <div class="flashcard" @mouseover="flipCard(index)" @mouseleave="flipCard(index)">
                             <div class="card-inner" :class="{ flipped: flashcard.flipped }">
                                 <div class="card-front">
@@ -142,17 +142,29 @@ export default {
 }
 
     
-@media screen  and (min-width: 800px) and (max-width: 1000px) {
+@media screen  and (min-width: 800px) and (max-width: 1100px) {
     .flashcard {
         width:40vw;
-        height: 30vh;
-      
+        height: 30vh; 
     }
-
+.flash{
+    margin-left: 3%;
+}
 #app h1 {
  
     font-size: 3rem;
     flex-direction: column;}
+}
+@media screen  and (min-width: 1300px) {
+   
+    .card-back, .card-front{
+        font-size: 1.5rem;
+    }
+    
+#app h1 {
+ 
+    font-size: 6rem;
+    }
 }
 
 </style>
