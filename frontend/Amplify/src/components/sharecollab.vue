@@ -198,7 +198,7 @@ v-sharetxt .note_content {
 .collab:hover {
     color: #71b0e4;
 }
-@media (max-width: 600px) {
+@media screen and (max-width: 800px) {
  v-share{
     flex-direction: column;
  }

@@ -61,4 +61,28 @@ v-app-home {
         background-position: 360px;
     }
 }
+@media screen and (max-width: 600px) {
+    .home_amplify {
+        font-size: 3rem;
+    }
+    .home {
+        font-size: 1rem;
+    }
+    .home_description {
+        font-size: 0.5rem;
+    }
+}
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+    .home_amplify {
+        font-size: 4rem;
+    }
+    .home {
+        font-size: 1.5rem;
+    }
+    .home_description {
+        font-size: 1rem;
+    }
+}
+
+
 </style>

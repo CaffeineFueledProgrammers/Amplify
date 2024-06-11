@@ -105,4 +105,55 @@ main {
 .download_now:hover {
     color: #71b0e4;
 }
+@media screen and (max-width: 800px) {
+    .mplify {
+        font-size: 4rem;
+        margin-top: 20%;
+    }
+    .keyfeatures {
+        font-size: 1rem;
+        margin-top: 30%;
+    }
+    .download_now {
+        font-size: 0.8rem;
+    }
+    .title {
+        font-size: 1rem;}
+    .key_description {
+        font-size: 1rem;
+    }
+    .logo{
+        width: 22vw;
+        height: 30vh;
+    }
+    .keyfeat_items{
+        flex-direction: column;
+      margin: 1%;
+  
+    }
+    }
+    @media screen and (min-width: 800) and (max-width: 1100px) {
+    .mplify {
+        font-size: 3rem;
+        margin-top: 20%;
+    }
+    .keyfeatures {
+        font-size: 1rem;
+        margin-top: 30%;
+    }
+    .download_now {
+        font-size: 0.8rem;
+    }
+    .title {
+        font-size: 1rem;}
+    .key_description {
+        font-size: 1rem;
+    }
+    .logo{
+        width: 28vw;
+        height: 35vh;
+    }
+   
+}
+
 </style>
