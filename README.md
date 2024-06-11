@@ -60,7 +60,7 @@
 3. Run the development server.
 
     ```bash
-    poetry run python -m amplify_backend
+    poetry run python -m amplify_backend dev
     ```
 
 4. The server will be running at `http://localhost:8081`.
