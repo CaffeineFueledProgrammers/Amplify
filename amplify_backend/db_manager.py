@@ -61,3 +61,11 @@ class DatabaseManager:  # pylint: disable=R0903
             )
             """
         )
+
+        self.database.commit()
+
+    def close(self) -> None:
+        """
+        Close the database connection.
+        """
+        self.database.close()

@@ -23,4 +23,4 @@ class Config:  # pylint: disable=too-few-public-methods,missing-class-docstring
     STATIC_DIR = "./amplify_frontend/dist"  # NOTE: Is this the right place?
 
     # Database configuration
-    DATABASE_URI = os.getenv("AMPLIFY_DATABASE_URI", "sqlite:///data/amplify.db")
+    DATABASE_URI = os.getenv("AMPLIFY_DATABASE_URI", "./data/amplify.db")

@@ -4,9 +4,11 @@ Amplify - AI-Powered Note-Taking for Students
 This module contains all the routes for the Flask app.
 """
 
-from flask import Flask, send_from_directory
+import json
 
-from amplify_backend import config
+from flask import Flask, request, send_from_directory
+
+from amplify_backend import config, user_manager
 
 flask_app = Flask(
     config.Config.NAME, static_folder=config.Config.STATIC_DIR, static_url_path=""
@@ -32,7 +34,21 @@ def api_v1_user_auth_register():
     Registers a new user.
     """
 
-    return {"message": "OK"}
+    data = request.json
+    try:
+        new_user_id = user_manager.UserManager().register_user(
+            data["username"], data["password"]
+        )
+        return (
+            {"message": "OK", "user_id": new_user_id, "username": data["username"]},
+            200,
+        )
+
+    except ValueError as e:
+        return {"message": str(e)}, 400
+
+    except Exception as e:
+        return {"message": str(e)}, 500
 
 
 # API Endpoints
@@ -42,7 +58,15 @@ def api_v1_user_auth_login():
     Logs in an existing user.
     """
 
-    return {"message": "OK"}
+    try:
+        data = request.json
+        user_id = user_manager.UserManager().validate_user(
+            data["username"], data["password"]
+        )
+        return {"message": "OK", "user_id": user_id, "username": data["username"]}, 200
+
+    except ValueError as e:
+        return {"message": str(e)}, 400
 
 
 def get_app() -> Flask:
