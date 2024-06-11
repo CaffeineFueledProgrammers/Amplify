@@ -6,7 +6,7 @@ variables that are used in the application.
 import os
 
 
-class Config:  # pylint: disable=too-few-public-methods,missing-class-docstring
+class BaseConfig:  # pylint: disable=too-few-public-methods,missing-class-docstring
     # Server configuration
     HOST = "0.0.0.0"
     PORT = 8081
@@ -15,8 +15,13 @@ class Config:  # pylint: disable=too-few-public-methods,missing-class-docstring
     DEBUG = False
     TESTING = False
 
+    # Flask configuration
+    NAME = "Amplify"
 
-class DevConfig:  # pylint: disable=too-few-public-methods,missing-class-docstring
+
+class DevConfig(
+    BaseConfig
+):  # pylint: disable=too-few-public-methods,missing-class-docstring
     DEBUG = True
     TESTING = False
 
@@ -24,7 +29,9 @@ class DevConfig:  # pylint: disable=too-few-public-methods,missing-class-docstri
     DATABASE_URI = os.getenv("AMPLIFY_DATABASE_URI", "sqlite:///data/amplify_local.db")
 
 
-class TestConfig:  # pylint: disable=too-few-public-methods,missing-class-docstring
+class TestConfig(
+    BaseConfig
+):  # pylint: disable=too-few-public-methods,missing-class-docstring
     DEBUG = True
     TESTING = True
 
@@ -32,7 +39,9 @@ class TestConfig:  # pylint: disable=too-few-public-methods,missing-class-docstr
     DATABASE_URI = os.getenv("AMPLIFY_DATABASE_URI", "sqlite:///data/amplify_test.db")
 
 
-class ProdConfig:  # pylint: disable=too-few-public-methods,missing-class-docstring
+class ProdConfig(
+    BaseConfig
+):  # pylint: disable=too-few-public-methods,missing-class-docstring
     DEBUG = False
 
     # Database configuration
