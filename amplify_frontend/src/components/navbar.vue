@@ -2,9 +2,12 @@
     <v-app-bar height="90">
         <img class="navlogo" src="@/assets/logo1@2x.png" alt="logo" width="80" height="80" />
         <v-spacer></v-spacer>
+          
+    
         <router-link :to="{ path: '/' }"><v-btn class="button">Home</v-btn></router-link>
         <router-link :to="{ path: '/login' }"><v-btn class="button">Log In</v-btn></router-link>
         <v-btn @click="goToSignUp" class="button">Sign Up</v-btn>
+        <router-link :to="{ path: '/dashboard' }"><v-btn class="button">Dashboard</v-btn></router-link>
     </v-app-bar>
 </template>
 
