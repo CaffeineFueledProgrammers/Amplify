@@ -29,6 +29,7 @@
                                                             color="blue"
                                                             autocomplete="false"
                                                             class="mt-16"
+                                                            v-model="username"
                                                         />
                                                         <v-text-field
                                                             label="Password"
@@ -37,6 +38,7 @@
                                                             color="blue"
                                                             autocomplete="false"
                                                             type="password"
+                                                            v-model="password"
                                                         />
                                                         <v-row>
                                                             <v-col cols="12" sm="7">
@@ -51,7 +53,7 @@
                                                                 <span class="caption blue--text">Forgot password</span>
                                                             </v-col>
                                                         </v-row>
-                                                        <v-btn color="blue" dark block tile>Login</v-btn>
+                                                        <v-btn color="blue" dark block tile @click="login">Login</v-btn>
                                                         <h4
                                                             class="text-center grey--text mt-4 mb-3"
                                                             style="font-family: &quot;montserrat&quot;"
@@ -238,10 +240,27 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     data: () => ({
         step: 1,
+        username: "",
+        password: "",
     }),
+    methods: {
+        async login() {
+            try {
+                const response = await axios.post(backend_url + "/api/v1/user/auth/login", {
+                    username: this.username,
+                    password: this.password,
+                });
+                console.log(response.data); // TODO: do something with the response
+            } catch (error) {
+                console.log(error.response.data);
+            }
+        },
+    },
     mounted() {
         if (this.$route.query.section === "signup") {
             this.step = 2;

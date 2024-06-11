@@ -35,7 +35,10 @@ export default defineConfig({
             },
         }),
     ],
-    define: { "process.env": {} },
+    define: {
+        "process.env": {},
+        backend_url: JSON.stringify("http://localhost:8081"),
+    },
     resolve: {
         alias: {
             "@": fileURLToPath(new URL("./src", import.meta.url)),
