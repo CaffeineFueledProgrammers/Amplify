@@ -1,4 +1,6 @@
 """
+Amplify - AI-Powered Note-Taking for Students
+
 This file is used to store all the configuration
 variables that are used in the application.
 """
@@ -17,6 +19,7 @@ class BaseConfig:  # pylint: disable=too-few-public-methods,missing-class-docstr
 
     # Flask configuration
     NAME = "Amplify"
+    STATIC_DIR = "./amplify_frontend/dist"  # NOTE: Is this the right place?
 
 
 class DevConfig(
