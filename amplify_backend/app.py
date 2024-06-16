@@ -4,8 +4,6 @@ Amplify - AI-Powered Note-Taking for Students
 This module contains all the routes for the Flask app.
 """
 
-import json
-
 from flask import Flask, request, send_from_directory
 
 from amplify_backend import config, user_manager
@@ -34,20 +32,22 @@ def api_v1_user_auth_register():
     Registers a new user.
     """
 
-    data = request.json
     try:
-        new_user_id = user_manager.UserManager().register_user(
-            data["username"], data["password"]
-        )
+        username: str = request.json.get("username", None)  # type: ignore[reportAny]
+        password: str = request.json.get("password", None)  # type: ignore[reportAny]
+        if not username or not password:
+            return {"message": "Invalid request"}, 400
+
+        new_user_id = user_manager.UserManager().register_user(username, password)
         return (
-            {"message": "OK", "user_id": new_user_id, "username": data["username"]},
+            {"message": "OK", "user_id": new_user_id, "username": username},
             200,
         )
 
     except ValueError as e:
         return {"message": str(e)}, 400
 
-    except Exception as e:
+    except Exception as e:  # pylint: disable=W0718
         return {"message": str(e)}, 500
 
 
@@ -59,11 +59,13 @@ def api_v1_user_auth_login():
     """
 
     try:
-        data = request.json
-        user_id = user_manager.UserManager().validate_user(
-            data["username"], data["password"]
-        )
-        return {"message": "OK", "user_id": user_id, "username": data["username"]}, 200
+        username: str = request.json.get("username", None)  # type: ignore[reportAny]
+        password: str = request.json.get("password", None)  # type: ignore[reportAny]
+        if not username or not password:
+            return {"message": "Invalid request"}, 400
+
+        user_id = user_manager.UserManager().validate_user(username, password)
+        return {"message": "OK", "user_id": user_id, "username": username}, 200
 
     except ValueError as e:
         return {"message": str(e)}, 400
