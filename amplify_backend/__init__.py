@@ -3,6 +3,6 @@
 Amplify - AI-Powered Note-Taking for Students
 """
 
-from amplify_backend.app import api
+from amplify_backend.api import api
 
 app = api
