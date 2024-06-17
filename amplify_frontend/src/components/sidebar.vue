@@ -36,7 +36,9 @@
       </v-navigation-drawer>
       <v-main style="height: 100vh"> 
         <div class= "note" >
-
+        <v-dashtitle >
+          AMPLIFY NOTES
+        </v-dashtitle>
         <notes />
         <sharedflashcar/>
         </div>
@@ -64,5 +66,10 @@ import sharedflashcar from './sharedflashcar.vue'
 z-index: 1;
 
 
+}
+v-dashtitle {
+  font-size: 5rem;
+  font-weight: bold;
+  margin: 20px;
 }
 </style>
