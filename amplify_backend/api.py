@@ -1,7 +1,7 @@
 """
 Amplify - AI-Powered Note-Taking for Students
 
-This module contains all the routes for the Flask app.
+This contains the API endpoints.
 """
 
 # pyright: reportCallInDefaultInitializer=false
@@ -14,6 +14,7 @@ from fastapi.security import HTTPBasicCredentials
 from amplify_backend.models.user import User
 
 api: FastAPI = FastAPI()
+
 # User Database (for testing purposes) and
 # In-memory session storage (for testing purposes)
 users: dict[str, User] = {}  # <username, User>
@@ -72,7 +73,7 @@ def user_register(username: str = Body(), password: str = Body()):
         )
 
     new_user = User(
-        id=len(users) + 1,
+        uid=len(users) + 1,
         username=username,
         password=password,
     )
@@ -86,7 +87,7 @@ def user_login(user: User = Depends(authenticate_user)):
     The endpoint for user login.
     """
 
-    session_id = create_session(user.id)
+    session_id = create_session(user.uid)
     return {"message": "Logged in successfully", "session_id": session_id}
 
 

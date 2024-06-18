@@ -15,6 +15,6 @@ class User:
         password: The hashed password of the user.
     """
 
-    id: int
+    uid: int
     username: str
     password: str
