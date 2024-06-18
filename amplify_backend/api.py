@@ -10,14 +10,15 @@ import random
 
 from fastapi import Body, Depends, FastAPI, HTTPException, Request, status
 from fastapi.security import HTTPBasicCredentials
+from sqlalchemy import select
+from sqlalchemy.orm import Session
 
+from amplify_backend import database
 from amplify_backend.models.user import User
 
 api: FastAPI = FastAPI()
 
-# User Database (for testing purposes) and
 # In-memory session storage (for testing purposes)
-users: dict[str, User] = {}  # <username, User>
 sessions: dict[int, int] = {}  # <session_id, user_id>
 
 
@@ -66,19 +67,25 @@ def user_register(username: str = Body(), password: str = Body()):
     The endpoint for user registration.
     """
 
-    # check if the username is already taken
-    if users.get(username):
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT, detail="Username already taken"
-        )
+    with Session(database.get_db_engine()) as db_session:
+        # check if the username is already taken
+        if select(User).where(User.username == username):
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT, detail="Username already taken"
+            )
 
-    new_user = User(
-        uid=len(users) + 1,
-        username=username,
-        password=password,
-    )
-    users[new_user.username] = new_user
-    return {"message": "User registered successfully"}
+        # new_user = User(
+        #     uid=len(users) + 1,
+        #     username=username,
+        #     password=password,
+        # )
+        new_user = User(
+            uid=len(users) + 1,
+            username=username,
+            password=password,
+        )
+        users[new_user.username] = new_user
+        return {"message": "User registered successfully"}
 
 
 @api.post("/login")
