@@ -10,6 +10,7 @@ import { createRouter, createWebHistory } from "vue-router/auto";
 import index from "@/pages/index.vue";
 import login from "@/pages/login.vue";
 import dashboard from "@/pages/dashboard.vue";
+import pricing from "@/pages/pricing.vue";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,8 +18,8 @@ const router = createRouter({
 const routes = [
     { path: "/", component: index },
     { path: "/login", component: login },
-   {path: "/dashboard", component: dashboard} 
-       
+    { path: "/dashboard", component: dashboard },
+    { path: "/pricing", component: pricing },
 ];
 
 export default router;
