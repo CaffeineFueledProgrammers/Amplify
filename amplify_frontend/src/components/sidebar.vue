@@ -26,7 +26,7 @@
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
-          <v-list-item prepend-icon="mdi-note-multiple" title="Notes" value="notes"></v-list-item>
+          <router-link :to="{ path: '/noteeditor' }"><v-list-item prepend-icon="mdi-note-multiple" title="Notes" value="notes"></v-list-item> </router-link>
              <v-list-item prepend-icon="mdi-account-group-outline" title="Shared With You" value="sharedwithyou"></v-list-item>
               <v-list-item prepend-icon="mdi-card-multiple-outline" title="Anki Flashcards" value="flashcard"></v-list-item>
           <v-list-item prepend-icon="mdi-account" title="Account Settings " value="account"></v-list-item>
@@ -34,13 +34,10 @@
              <v-list-item prepend-icon="mdi-location-exit" title="Sign Out" value="signout"></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-main style="height: 100vh"> 
+      <v-main > 
         <div class= "note" >
-        <v-dashtitle >
-          AMPLIFY NOTES
-        </v-dashtitle>
         <notes />
-        <sharedflashcar/>
+        <sharedflashcar />
         </div>
       </v-main>
     </v-layout>

@@ -8,6 +8,7 @@
     "lint": "eslint . --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@vueup/vue-quill": "^1.2.0",
     "aos": "^2.3.4",
     "core-js": "^3.34.0",
     "roboto-fontface": "*",
