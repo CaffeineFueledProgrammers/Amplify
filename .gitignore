@@ -1,4 +1,4 @@
-backend/secrets.env
+data/amplify.db
 
 #--------------------------------------------------#
 # The following was generated with gitignore.nvim: #
