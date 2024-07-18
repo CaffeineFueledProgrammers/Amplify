@@ -1,10 +1,15 @@
 <template>
     <v-app>
         <div id="app">
-            <img src="@/assets/bg@flash.png" class="bgflash">
-            <h1 class=" d-flex justify-center align-center">Generate Flashcards</h1>
-            <v-container class="flash" >
-                <v-row class=" d-flex justify-center align-center ml-5"  data-aos="fade-up"  data-aos-once="false" data-aos-duration="500" >
+            <img src="@/assets/bg@flash.png" class="bgflash" />
+            <h1 class="d-flex justify-center align-center">Generate Flashcards</h1>
+            <v-container class="flash">
+                <v-row
+                    class="d-flex justify-center align-center ml-5"
+                    data-aos="fade-up"
+                    data-aos-once="false"
+                    data-aos-duration="500"
+                >
                     <v-col v-for="(flashcard, index) in flashcards" :key="index" cols="16" md="6">
                         <div class="flashcard" @mouseover="flipCard(index)" @mouseleave="flipCard(index)">
                             <div class="card-inner" :class="{ flipped: flashcard.flipped }">
@@ -34,8 +39,6 @@ export default {
             AOS.init();
         });
     },
-
-    name: "App",
     data() {
         return {
             flashcards: [
@@ -127,44 +130,39 @@ export default {
 }
 @media screen and (max-width: 800px) {
     .flashcard {
-        width:80vw;
+        width: 80vw;
         height: 30vh;
-      
     }
-.flash{
-      
+    .flash {
         flex-direction: column;
-}
-#app h1 {
- 
-    font-size: 3rem;
-    flex-direction: column;}
+    }
+    #app h1 {
+        font-size: 3rem;
+        flex-direction: column;
+    }
 }
 
-    
-@media screen  and (min-width: 800px) and (max-width: 1100px) {
+@media screen and (min-width: 800px) and (max-width: 1100px) {
     .flashcard {
-        width:40vw;
-        height: 30vh; 
+        width: 40vw;
+        height: 30vh;
     }
-.flash{
-    margin-left: 3%;
+    .flash {
+        margin-left: 3%;
+    }
+    #app h1 {
+        font-size: 3rem;
+        flex-direction: column;
+    }
 }
-#app h1 {
- 
-    font-size: 3rem;
-    flex-direction: column;}
-}
-@media screen  and (min-width: 1300px) {
-   
-    .card-back, .card-front{
+@media screen and (min-width: 1300px) {
+    .card-back,
+    .card-front {
         font-size: 1.5rem;
     }
-    
-#app h1 {
- 
-    font-size: 6rem;
+
+    #app h1 {
+        font-size: 6rem;
     }
 }
-
 </style>
