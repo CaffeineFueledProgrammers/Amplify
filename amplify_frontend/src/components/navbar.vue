@@ -8,6 +8,7 @@
         <router-link :to="{ path: '/login' }"><v-btn class="button">Log In</v-btn></router-link>
         <v-btn @click="goToSignUp" class="button">Sign Up</v-btn>
         <router-link :to="{ path: '/dashboard' }"><v-btn class="button">Dashboard</v-btn></router-link>
+        <router-link :to="{ path: '/pricing' }"><v-btn class="button">pricing</v-btn></router-link>
     </v-app-bar>
 </template>
 
