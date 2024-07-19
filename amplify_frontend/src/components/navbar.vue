@@ -26,12 +26,9 @@ v-app-bar {
     border: 2px solid #566498;
     box-shadow: 0 0.5em 0.5em -0.4em #566498;
     transform: translateY(-0.25em);
-}
-:hover,
-:focus {
-    border-color: #566498;
     color: #fff;
 }
+
 .navlogo {
     margin-left: 5%;
 }
