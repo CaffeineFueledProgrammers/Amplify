@@ -99,7 +99,7 @@
              
             </v-share>
         </v-main>
-        <AppFooter />
+       
     </v-app>
 </template>
 <script>

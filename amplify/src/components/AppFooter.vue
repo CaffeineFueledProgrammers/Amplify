@@ -1,7 +1,7 @@
 <template>
-    <v-footer height="20vh">
+    <v-footer height="18vh">
         <v-amplify_footer class="d-flex justify-start align-center">
-            <v-img height="120px" width="120px" src="@/assets/logo1@2x.png"></v-img>
+            <v-img height="80px" width="120px" src="@/assets/logo1@2x.png"></v-img>
             <v-amplify_footertext class="d-flex align-start justify-center flex-column">
                 <h1 class="title">Amplify</h1>
                 <h2 class="tagline">Make Powerful Notes</h2>
@@ -38,6 +38,7 @@
 
 <style>
 v-amplify_footer {
+
     margin-left: 10%;
     background-image: url();
 }
@@ -55,7 +56,7 @@ v-amplify_footertext {
     text-align: start;
 }
 .tagline {
-    font-size: 1rem;
+    font-size: 0.7rem;
     font-family: "MuktaVaani", sans-serif;
     color: #a8a8a8;
 }
