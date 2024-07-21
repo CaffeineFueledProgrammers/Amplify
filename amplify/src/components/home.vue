@@ -83,6 +83,4 @@ v-app-home {
         font-size: 1rem;
     }
 }
-
-
 </style>

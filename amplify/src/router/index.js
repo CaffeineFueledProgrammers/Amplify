@@ -12,20 +12,6 @@ import { routes } from "vue-router/auto-routes";
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: setupLayouts(routes),
-    // routes: [
-    //     {
-    //         path: "/",
-    //         component: () => import("../pages/index.vue"),
-    //     },
-    //     {
-    //         path: "/pricing",
-    //         component: () => import("../pages/pricing.vue"),
-    //     },
-    //     {
-    //         path: "/login",
-    //         component: () => import("../pages/login.vue"),
-    //     },
-    // ],
 });
 
 // Workaround for https://github.com/vitejs/vite/issues/11804
