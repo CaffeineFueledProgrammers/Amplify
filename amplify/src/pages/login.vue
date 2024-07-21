@@ -56,7 +56,12 @@
                                                                 </v-checkbox>
                                                             </v-col>
                                                             <v-col cols="12" sm="5">
-                                                                <span class="caption blue--text">Forgot password</span>
+                                                                <!-- TODO: cursor not changing on hover -->
+                                                                <span
+                                                                    class="caption blue--text"
+                                                                    @click="sendRecoveryEmail"
+                                                                    >Forgot password</span
+                                                                >
                                                             </v-col>
                                                         </v-row>
                                                         <v-btn color="blue" dark block tile @click="login">Login</v-btn>
@@ -71,14 +76,6 @@
                                                         >
                                                             <v-btn depressed outlined color="grey" @click="googleLogin">
                                                                 <v-icon icon="mdi-google" color="red"></v-icon>
-                                                            </v-btn>
-                                                            <v-btn
-                                                                depressed
-                                                                outlined
-                                                                color="grey"
-                                                                @click="facebookLogin"
-                                                            >
-                                                                <v-icon icon="mdi-facebook" color="blue"></v-icon>
                                                             </v-btn>
                                                             <v-btn depressed outlined color="grey" @click="githubLogin">
                                                                 <v-icon icon="mdi-github" color="black"></v-icon>
@@ -244,6 +241,7 @@ import {
     GoogleAuthProvider,
     GithubAuthProvider,
     signInWithPopup,
+    sendPasswordResetEmail,
 } from "firebase/auth";
 
 export default {
@@ -327,6 +325,15 @@ export default {
                     const user = userCredential.user;
                     console.log(user);
                     this.addAlert("success", "Account created successfully!");
+                })
+                .catch((error) => {
+                    this.addAlert("error", error.message);
+                });
+        },
+        sendRecoveryEmail() {
+            sendPasswordResetEmail(auth, this.login_email)
+                .then(() => {
+                    this.addAlert("success", "Password reset email sent! Please check your inbox.");
                 })
                 .catch((error) => {
                     this.addAlert("error", error.message);
