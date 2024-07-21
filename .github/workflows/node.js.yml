@@ -16,13 +16,16 @@ jobs:
                 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
         steps:
-            - uses: actions/checkout@v4
+            - name: Checkout
+              uses: actions/checkout@v4
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: "npm"
+            - name: Build and test
             - working-directory: ./amplify
-            - run: npm ci
-            - run: npm run build
-            - run: npm run lint
+            - run: |
+              npm ci
+              npm run build
+              npm run lint
