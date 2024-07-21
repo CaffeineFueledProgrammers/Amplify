@@ -11,7 +11,7 @@
                 data-aos-once="false"
                 data-aos-duration="500"
             >
-                <v-card  height="400" max-width="350" color="#1e1e24" hover>
+                <v-card height="400" max-width="350" color="#1e1e24" hover>
                     <v-card-item>
                         <v-card-title> Grammar Checking </v-card-title>
                     </v-card-item>

@@ -23,7 +23,7 @@
                         </v-container>
 
                         <v-btn class="btnbill" @click="submit">Submit</v-btn>
-                        <v-btn  @click="showQRCode = true" class="btnbill">Show QR Code</v-btn>
+                        <v-btn @click="showQRCode = true" class="btnbill">Show QR Code</v-btn>
 
                         <v-dialog v-model="showQRCode" width="30vw" max-width="50vw">
                             <v-card>
@@ -47,7 +47,6 @@
                                     </div>
                                     <div v-else>No QR Code available</div>
                                     <div v-else>No QR Code available</div>
-                                   
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-btn color="primary" text @click="showQRCode = false">Close</v-btn>
@@ -148,7 +147,7 @@ v-payinfo {
 }
 .btnbill {
     background-color: #566498;
-color:beige;
+    color: beige;
     margin-top: 20px;
     margin-left: 10px;
 }

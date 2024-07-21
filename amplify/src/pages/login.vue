@@ -4,6 +4,7 @@
             <v-container>
                 <v-row align="center" justify="center">
                     <v-col cols="12" sm="10">
+                        <!-- TODO: do not span whole viewport width -->
                         <v-alert
                             v-for="alert in alerts"
                             :key="alert.id"

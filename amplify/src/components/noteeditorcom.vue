@@ -1,5 +1,5 @@
 <template>
-    <v-app >
+    <v-app>
         <v-main class="noteditorcom">
             <v-row justify="center">
                 <v-col cols="20" md="60">
@@ -84,12 +84,14 @@
                                                             network. Get AmpliPro NOW!
                                                         </div>
 
-                                                        <router-link :to="{ path: '/billingpage' }"> <v-btn
-                                                            class="text-none font-weight-bold ms-n4"
-                                                            color="primary"
-                                                            text="Get AmpliPro"
-                                                            variant="text"
-                                                        ></v-btn> </router-link>
+                                                        <router-link :to="{ path: '/billingpage' }">
+                                                            <v-btn
+                                                                class="text-none font-weight-bold ms-n4"
+                                                                color="primary"
+                                                                text="Get AmpliPro"
+                                                                variant="text"
+                                                            ></v-btn>
+                                                        </router-link>
                                                     </v-card-text>
 
                                                     <v-divider class="mt-2"></v-divider>

@@ -8,10 +8,12 @@
                         <v-card class="mx-auto my-8 amplifree" elevation="2">
                             <v-card-title class="text-center title-style">AmpliFree</v-card-title>
                             <v-card-subtitle class="text-center price-style">Free</v-card-subtitle>
-                            <v-card-subtitle class="text-center billing-style"> You can access the basic features <br />
-                                of Amplify for free.</v-card-subtitle>
+                            <v-card-subtitle class="text-center billing-style">
+                                You can access the basic features <br />
+                                of Amplify for free.</v-card-subtitle
+                            >
                             <v-card-actions class="text-center">
-                                <v-btn class="mx-2 signupbtn" @click="goToSignUp"  color="#566498">TRY NOW! </v-btn>
+                                <v-btn class="mx-2 signupbtn" @click="goToSignUp" color="#566498">TRY NOW! </v-btn>
                             </v-card-actions>
                             <v-card-text class="text-center">
                                 <v-list dense>
@@ -19,7 +21,9 @@
                                         <v-list-item-content>Basic Note Taking </v-list-item-content>
                                     </v-list-item>
                                     <v-list-item>
-                                        <v-list-item-content> Collaboration ( Limited to 3 Members)</v-list-item-content>
+                                        <v-list-item-content>
+                                            Collaboration ( Limited to 3 Members)</v-list-item-content
+                                        >
                                     </v-list-item>
                                 </v-list>
                             </v-card-text>
@@ -27,18 +31,19 @@
                     </v-col>
                     <!-- AmpliPro -->
                     <v-col cols="12" sm="6" md="4">
-                        <v-card class="mx-auto my-8 amplipro"  elevation="2">
+                        <v-card class="mx-auto my-8 amplipro" elevation="2">
                             <v-card-title class="text-center title-styleamplipro">AmpliPro</v-card-title>
-                          <v-card-subtitle class="text-center price-style">₱ 300.00</v-card-subtitle>
+                            <v-card-subtitle class="text-center price-style">₱ 300.00</v-card-subtitle>
                             <v-card-subtitle class="text-center billing-style"> per month</v-card-subtitle>
                             <v-card-actions class="text-center">
-                               
-                                 <router-link :to="{ path: '/billingpage' }"> <v-btn class="mx-2 subbtn" >Subscribe Now! </v-btn></router-link>
+                                <router-link :to="{ path: '/billingpage' }">
+                                    <v-btn class="mx-2 subbtn">Subscribe Now! </v-btn></router-link
+                                >
                             </v-card-actions>
                             <v-card-text class="text-center amplipro">
                                 <v-list dense class="amplipro">
                                     <v-list-item>
-                                        <v-list-item-content >Unlimited Notes</v-list-item-content>
+                                        <v-list-item-content>Unlimited Notes</v-list-item-content>
                                     </v-list-item>
                                     <v-list-item>
                                         <v-list-item-content>Advance Paraphrasing</v-list-item-content>
@@ -55,9 +60,8 @@
                                 </v-list>
                             </v-card-text>
                         </v-card>
-                
                     </v-col>
-                </v-row>   
+                </v-row>
             </v-container>
         </v-main>
     </v-app>
@@ -73,13 +77,12 @@ export default {
 };
 </script>
 
-<style scoped >
+<style scoped>
 .title-style {
- 
     font-family: "Poppins", sans-serif;
     font-size: 40px;
-    font-weight: 600;   
-    margin-top:1.5vh;
+    font-weight: 600;
+    margin-top: 1.5vh;
 }
 
 .price-style {
@@ -98,39 +101,36 @@ export default {
     justify-content: center;
 }
 
-
 .v-list-item-content {
     font-family: "Poppins", sans-serif;
     font-size: 14px;
-
 }
-.title-styleamplipro{
+.title-styleamplipro {
     color: black;
     font-family: "Poppins", sans-serif;
     font-size: 40px;
     font-weight: 600;
-    margin-top:1.5vh;
+    margin-top: 1.5vh;
 }
-.amplifree, .amplipro {
+.amplifree,
+.amplipro {
     max-height: 80vh;
     min-height: 80vh;
 }
 
 .amplipro {
-  
     background-color: beige;
     color: black;
-
 }
 .signupbtn {
-    color: #566498 ;
+    color: #566498;
     background-color: beige;
     font-weight: bold;
     width: 13vw;
     margin-top: 4vh;
 }
 .subbtn {
-   color: white;
+    color: white;
     background-color: #566498;
     width: 13vw;
     margin-top: 6vh;

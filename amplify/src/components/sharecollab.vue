@@ -1,8 +1,8 @@
 <template>
     <v-app>
         <v-main>
-            <v-share class="d-flex pa-3 ma-2">  
-                 <v-sharetxt class="d-flex flex-column">
+            <v-share class="d-flex pa-3 ma-2">
+                <v-sharetxt class="d-flex flex-column">
                     <div class="share_title">
                         <h1>Sharing</h1>
                         <h1 class="collab">Collaboration</h1>
@@ -14,8 +14,8 @@
                         accessible to internet users worldwide.
                     </div>
                 </v-sharetxt>
-                <v-note   data-aos="fade-right"  data-aos-delay="200" data-aos-once="false"  data-aos-duration="1000" >
-                    <v-sheet rounded="rounded" class="mx-auto block justify-start align-start opacity-0.5" >
+                <v-note data-aos="fade-right" data-aos-delay="200" data-aos-once="false" data-aos-duration="1000">
+                    <v-sheet rounded="rounded" class="mx-auto block justify-start align-start opacity-0.5">
                         <v-note_title>
                             <h2>NOTE</h2>
                             <h1>ADVANTAGE OF DIGITAL NOTE TAKING</h1>
@@ -96,10 +96,8 @@
                         </v-collaborators>
                     </v-sheet>
                 </v-note>
-             
             </v-share>
         </v-main>
-       
     </v-app>
 </template>
 <script>
@@ -132,7 +130,7 @@ v-note {
     display: block;
     width: 40vw;
     max-width: 40vw;
-    margin-left:10% ;
+    margin-left: 10%;
     color: #16171b;
 }
 v-note_title h1 {
@@ -199,65 +197,61 @@ v-sharetxt .note_content {
     color: #71b0e4;
 }
 @media screen and (max-width: 800px) {
- v-share{
-    flex-direction: column;
- }
- v-note{
-    margin-left:2% ;
-    margin-top: 5%;
-     margin-bottom: 5%;
-    width: 80vw;
-    max-width: 80vw;
-    height: 50vw;
-    max-height: 50vw;
- }
+    v-share {
+        flex-direction: column;
+    }
+    v-note {
+        margin-left: 2%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        width: 80vw;
+        max-width: 80vw;
+        height: 50vw;
+        max-height: 50vw;
+    }
 
-v-note_title h1 {
-    font-size: 1rem;
-    padding-top: 5%;
-    text-align: center;
-}
-v-note_title h2 {
-    font-size: 0.5rem;
-    padding-top: 3%;
-}
-v-note .note_content {
-    font-size: 0.5rem;
-    margin-top: 5%;
-}
-v-collaborators {
-    display: block;
-    margin-top: 5%;
-    width: 80vw;
-    height: 5vw;
-    max-height: 5vw;
-    color: #5e6275;
-}
-v-collaborators h2 {
-    font-size: 0.5rem;
-}
-v-collaborators v-btn {
-    align-items: center;
-    justify-content: center;
-    height: 3%;
+    v-note_title h1 {
+        font-size: 1rem;
+        padding-top: 5%;
+        text-align: center;
+    }
+    v-note_title h2 {
+        font-size: 0.5rem;
+        padding-top: 3%;
+    }
+    v-note .note_content {
+        font-size: 0.5rem;
+        margin-top: 5%;
+    }
+    v-collaborators {
+        display: block;
+        margin-top: 5%;
+        width: 80vw;
+        height: 5vw;
+        max-height: 5vw;
+        color: #5e6275;
+    }
+    v-collaborators h2 {
+        font-size: 0.5rem;
+    }
+    v-collaborators v-btn {
+        align-items: center;
+        justify-content: center;
+        height: 3%;
+    }
 
-}
-
-v-sharetxt h1 {
-    width: 80vw;
-   margin-top: 0%;
-    font-size: 3rem;
-
-}
-v-sharetxt .note_content {
-  width: 80vw;
-    font-size: 0.8rem;
-
-}
-v-tabs-window-item{
-visibility:hidden;
-
-}
+    v-sharetxt h1 {
+        width: 80vw;
+        margin-top: 0%;
+        font-size: 3rem;
+    }
+    v-sharetxt .note_content {
+        width: 80vw;
+        font-size: 0.8rem;
+    }
+    v-tabs-window-item {
+        visibility: hidden;
+    }
 }
 
 @media (min-width: 1024px) {
