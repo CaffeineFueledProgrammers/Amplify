@@ -281,12 +281,12 @@ export default {
             signInWithEmailAndPassword(auth, this.login_email, this.login_password)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    const auth = getAuth();
-                    console.log(auth.currentUser);
+                    store.login(user);
                     this.addAlert("success", "Login successful!");
                 })
                 .catch((error) => {
                     this.addAlert("error", error.message);
+                    console.log(error);
                 });
         },
         googleLogin() {
@@ -296,7 +296,7 @@ export default {
             signInWithPopup(auth, provider)
                 .then((result) => {
                     const user = result.user;
-                    console.log(user);
+                    store.login(user);
                     this.addAlert("success", "Login successful!");
                 })
                 .catch((error) => {
@@ -310,7 +310,7 @@ export default {
             signInWithPopup(auth, provider)
                 .then((result) => {
                     const user = result.user;
-                    console.log(user);
+                    store.login(user);
                     this.addAlert("success", "Login successful!");
                 })
                 .catch((error) => {
@@ -324,7 +324,18 @@ export default {
             createUserWithEmailAndPassword(auth, this.signup_email, this.signup_password)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    console.log(user);
+                    const auth = getAuth();
+
+                    updateProfile(auth.currentUser, {
+                        displayName: `${this.signup_first_name} ${this.signup_last_name}`,
+                    })
+                        .then(() => {
+                            console.log("User profile updated successfully");
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                    store.login(user);
                     this.addAlert("success", "Account created successfully!");
                 })
                 .catch((error) => {
@@ -342,6 +353,8 @@ export default {
         },
     },
     mounted() {
+        const store = useUserStore();
+
         if (this.$route.query.section === "signup") {
             this.step = 2;
         }

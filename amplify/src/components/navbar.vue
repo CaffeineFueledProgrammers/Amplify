@@ -5,9 +5,9 @@
         </router-link>
         <v-spacer></v-spacer>
         <router-link to="/"><v-btn class="button">Home</v-btn></router-link>
-        <router-link to="/login"><v-btn class="button">Log In</v-btn></router-link>
-        <v-btn @click="goToSignUp" class="button">Sign Up</v-btn>
-        <router-link :to="{ path: '/pricing' }"><v-btn class="button">pricing</v-btn></router-link>
+        <router-link to="/pricing"><v-btn class="button">pricing</v-btn></router-link>
+        <router-link to="/login" v-if="!isLoggedIn"><v-btn class="button">Log In</v-btn></router-link>
+        <router-link @click="logout" v-else><v-btn class="button">Log Out</v-btn></router-link>
     </v-app-bar>
 </template>
 
@@ -34,14 +34,21 @@ v-app-bar {
 </style>
 
 <script>
+import { useUserStore } from "@/stores/user";
 export default {
     methods: {
-        goToSignUp() {
-            this.$router.push({ path: "/login", query: { section: "signup" } });
+        logout() {
+            const store = useUserStore();
+            store.logout();
         },
-        goToHome() {
-            this.$router.push({ path: "/" });
-        },
+    },
+    setup() {
+        const userStore = useUserStore();
+        const isLoggedIn = computed(() => userStore.isLoggedIn); // Assuming `isLoggedIn` is a state in your store
+
+        return {
+            isLoggedIn,
+        };
     },
 };
 </script>
