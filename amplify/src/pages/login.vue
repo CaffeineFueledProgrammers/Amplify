@@ -4,6 +4,12 @@
             <v-container>
                 <v-row align="center" justify="center">
                     <v-col cols="12" sm="10">
+                        <v-alert type="error" v-if="error_message" closable="true">
+                            {{ error_message }}
+                        </v-alert>
+                        <v-alert type="success" v-if="success_message" closable="true">
+                            {{ success_message }}
+                        </v-alert>
                         <v-card class="elevation-6 mt-10">
                             <v-window v-model="step">
                                 <v-window-item :value="1">
@@ -26,7 +32,7 @@
                                                             color="blue"
                                                             autocomplete="false"
                                                             class="mt-16"
-                                                            v-model="username"
+                                                            v-model="login_email"
                                                         />
                                                         <v-text-field
                                                             label="Password"
@@ -35,7 +41,7 @@
                                                             color="blue"
                                                             autocomplete="false"
                                                             type="password"
-                                                            v-model="password"
+                                                            v-model="login_password"
                                                         />
                                                         <v-row>
                                                             <v-col cols="12" sm="7">
@@ -60,13 +66,18 @@
                                                         <div
                                                             class="d-flex justify-space-between align-center mx-10 mb-11"
                                                         >
-                                                            <v-btn depressed outlined color="grey">
+                                                            <v-btn depressed outlined color="grey" @click="googleLogin">
                                                                 <v-icon icon="mdi-google" color="red"></v-icon>
                                                             </v-btn>
-                                                            <v-btn depressed outlined color="grey">
+                                                            <v-btn
+                                                                depressed
+                                                                outlined
+                                                                color="grey"
+                                                                @click="facebookLogin"
+                                                            >
                                                                 <v-icon icon="mdi-facebook" color="blue"></v-icon>
                                                             </v-btn>
-                                                            <v-btn depressed outlined color="grey">
+                                                            <v-btn depressed outlined color="grey" @click="githubLogin">
                                                                 <v-icon icon="mdi-github" color="black"></v-icon>
                                                             </v-btn>
                                                         </div>
@@ -152,6 +163,7 @@
                                                                     color="blue"
                                                                     autocomplete="false"
                                                                     class="mt-4"
+                                                                    v-model="signup_first_name"
                                                                 />
                                                             </v-col>
                                                             <v-col cols="12" sm="6">
@@ -162,6 +174,7 @@
                                                                     color="blue"
                                                                     autocomplete="false"
                                                                     class="mt-4"
+                                                                    v-model="signup_last_name"
                                                                 />
                                                             </v-col>
                                                         </v-row>
@@ -171,6 +184,7 @@
                                                             dense
                                                             color="blue"
                                                             autocomplete="false"
+                                                            v-model="signup_email"
                                                         />
                                                         <v-text-field
                                                             label="Password"
@@ -179,6 +193,7 @@
                                                             color="blue"
                                                             autocomplete="false"
                                                             type="password"
+                                                            v-model="signup_password"
                                                         />
                                                         <v-row>
                                                             <v-col cols="12" sm="7">
@@ -197,7 +212,9 @@
                                                                 >
                                                             </v-col>
                                                         </v-row>
-                                                        <v-btn color="blue" dark block tile>Sign up</v-btn>
+                                                        <v-btn color="blue" dark block tile @click="signup"
+                                                            >Sign up</v-btn
+                                                        >
 
                                                         <h4
                                                             class="text-center grey--text mt-4 mb-3"
@@ -234,25 +251,101 @@
 </template>
 
 <script>
-import axios from "axios";
+import { useUserStore } from "@/stores/user";
+import { auth } from "@/firebasehandler/auth";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    updateProfile,
+    GoogleAuthProvider,
+    FacebookAuthProvider,
+    GithubAuthProvider,
+    signInWithPopup,
+} from "firebase/auth";
 
 export default {
     data: () => ({
         step: 1,
-        username: "",
-        password: "",
+        login_email: "",
+        login_password: "",
+        signup_first_name: "",
+        signup_last_name: "",
+        signup_email: "",
+        signup_password: "",
+
+        success_message: "",
+        error_message: "",
     }),
     methods: {
-        async login() {
-            try {
-                const response = await axios.post(backend_url + "/api/v1/user/auth/login", {
-                    username: this.username,
-                    password: this.password,
+        login() {
+            // The email/password login method
+            this.clearMessages();
+            const store = useUserStore();
+
+            signInWithEmailAndPassword(auth, this.login_email, this.login_password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    const auth = getAuth();
+                    console.log(auth.currentUser);
+                    this.success_message = "Login successful";
+                })
+                .catch((error) => {
+                    this.error_message = error.message;
                 });
-                console.log(response.data); // TODO: do something with the response
-            } catch (error) {
-                console.log(error.response.data);
-            }
+        },
+        googleLogin() {
+            // The Google login method
+            this.clearMessages();
+            const store = useUserStore();
+            const provider = new GoogleAuthProvider();
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    const user = result.user;
+                    console.log(user);
+                    this.success_message = "Login successful";
+                })
+                .catch((error) => {
+                    this.error_message = error.message;
+                });
+        },
+        facebookLogin() {
+            this.error_message = "Facebook login is not yet implemented";
+        },
+        githubLogin() {
+            // The Github login method
+            this.clearMessages();
+            const store = useUserStore();
+            const provider = new GithubAuthProvider();
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    const user = result.user;
+                    console.log(user);
+                    this.success_message = "Login successful";
+                })
+                .catch((error) => {
+                    this.error_message = error.message;
+                });
+        },
+        signup() {
+            // Create a new user account
+            this.clearMessages();
+            const store = useUserStore();
+
+            createUserWithEmailAndPassword(auth, this.signup_email, this.signup_password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    console.log(user);
+                    this.success_message = "Account created successfully";
+                })
+                .catch((error) => {
+                    this.error_message = error.message;
+                });
+        },
+        clearMessages() {
+            // Clear the success and error message notifications
+            this.success_message = "";
+            this.error_message = "";
         },
     },
     mounted() {
