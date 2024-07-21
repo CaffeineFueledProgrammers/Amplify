@@ -20,12 +20,11 @@ jobs:
               uses: actions/checkout@v4
             - name: Use Node.js ${{ matrix.node-version }}
               uses: actions/setup-node@v3
+              working-directory: ./amplify
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: "npm"
-            - name: Build and test
-            - working-directory: ./amplify
-            - run: |
+              run: |
                   npm ci
                   npm run build
                   npm run lint
