@@ -10,13 +10,10 @@
                                     <v-row>
                                         <v-col cols="12" md="6">
                                             <v-card-text class="mt-12">
-                                                <h3 class="text-center" style="font-family: &quot;montserrat&quot;">
+                                                <h3 class="text-center" style="font-family: 'montserrat'">
                                                     Login in to Your Account
                                                 </h3>
-                                                <h4
-                                                    class="text-center grey--text"
-                                                    style="font-family: &quot;Mukta Vaani&quot;"
-                                                >
+                                                <h4 class="text-center grey--text" style="font-family: 'Mukta Vaani'">
                                                     Log in to your account so you can continue builiding <br />and
                                                     editing your onboarding flows
                                                 </h4>
@@ -56,7 +53,7 @@
                                                         <v-btn color="blue" dark block tile @click="login">Login</v-btn>
                                                         <h4
                                                             class="text-center grey--text mt-4 mb-3"
-                                                            style="font-family: &quot;montserrat&quot;"
+                                                            style="font-family: 'montserrat'"
                                                         >
                                                             Login with
                                                         </h4>
@@ -83,7 +80,7 @@
                                                     <h2
                                                         class="text-center"
                                                         style="
-                                                            font-family: &quot;montserrat&quot;;
+                                                            font-family: 'montserrat';
                                                             color: #1e1e24;
                                                             margin-bottom: 10px;
                                                         "
@@ -92,7 +89,7 @@
                                                     </h2>
                                                     <h4
                                                         class="text-center"
-                                                        style="font-family: &quot;Mukta Vaani&quot;; color: #1e1e24"
+                                                        style="font-family: 'Mukta Vaani'; color: #1e1e24"
                                                     >
                                                         Let's get you all set up so you can start creating your your
                                                         first<br />
@@ -114,7 +111,7 @@
                                                     <h2
                                                         class="text-center"
                                                         style="
-                                                            font-family: &quot;montserrat&quot;;
+                                                            font-family: 'montserrat';
                                                             color: #1e1e24;
                                                             margin-bottom: 10px;
                                                         "
@@ -123,7 +120,7 @@
                                                     </h2>
                                                     <h4
                                                         class="text-center"
-                                                        style="font-family: &quot;Mukta Vaani&quot;; color: #1e1e24"
+                                                        style="font-family: 'Mukta Vaani'; color: #1e1e24"
                                                     >
                                                         Log in to your account so you can continue building and<br />
                                                         editing your onboarding flows
@@ -137,13 +134,10 @@
 
                                         <v-col cols="12" md="6">
                                             <v-card-text class="mt-12">
-                                                <h3 class="text-center" style="font-family: &quot;montserrat&quot;">
+                                                <h3 class="text-center" style="font-family: 'montserrat'">
                                                     Sign Up for an Account
                                                 </h3>
-                                                <h5
-                                                    class="text-center grey--text"
-                                                    style="font-family: &quot;Mukta Vaani&quot;"
-                                                >
+                                                <h5 class="text-center grey--text" style="font-family: 'Mukta Vaani'">
                                                     Let's get you all set up so you can start creatin your <br />
                                                     first onboarding experiance
                                                 </h5>
@@ -198,7 +192,7 @@
                                                             <v-col cols="12" sm="5">
                                                                 <span
                                                                     class="caption blue--text ml-n4"
-                                                                    style="font-family: &quot;montserrat&quot;"
+                                                                    style="font-family: 'montserrat'"
                                                                     >Terms &Conditions</span
                                                                 >
                                                             </v-col>
@@ -207,7 +201,7 @@
 
                                                         <h4
                                                             class="text-center grey--text mt-4 mb-3"
-                                                            style="font-family: &quot;montserrat&quot;"
+                                                            style="font-family: 'montserrat'"
                                                         >
                                                             Or Sign up using
                                                         </h4>
