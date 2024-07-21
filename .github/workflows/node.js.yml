@@ -26,7 +26,7 @@ jobs:
             - name: Install Dependencies, Build, and Lint
               working-directory: ./amplify
               run: |
-                  pwd
+                  ls -la
                   npm ci
                   npm run build
                   npm run lint
