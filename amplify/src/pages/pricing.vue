@@ -29,7 +29,7 @@
                     <v-col cols="12" sm="6" md="4">
                         <v-card class="mx-auto my-8 amplipro"  elevation="2">
                             <v-card-title class="text-center title-styleamplipro">AmpliPro</v-card-title>
-                          <v-card-subtitle class="text-center price-style">300.00 php</v-card-subtitle>
+                          <v-card-subtitle class="text-center price-style">₱ 300.00</v-card-subtitle>
                             <v-card-subtitle class="text-center billing-style"> per month</v-card-subtitle>
                             <v-card-actions class="text-center">
                                

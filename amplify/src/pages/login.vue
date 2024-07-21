@@ -4,7 +4,7 @@
             <v-container>
                 <v-row align="center" justify="center">
                     <v-col cols="12" sm="10">
-                        <v-card class="elevation-6 mt-10">
+                        <v-card class="elevation-6 mt-10 logincard">
                             <v-window v-model="step">
                                 <v-window-item :value="1">
                                     <v-row>
@@ -132,8 +132,8 @@
                                             </div>
                                         </v-col>
 
-                                        <v-col cols="12" md="6">
-                                            <v-card-text class="mt-12">
+                                        <v-col cols="12" md="6" >
+                                            <v-card-text class="mt-12 ">
                                                 <h3 class="text-center" style="font-family: 'montserrat'">
                                                     Sign Up for an Account
                                                 </h3>
@@ -199,25 +199,7 @@
                                                         </v-row>
                                                         <v-btn color="blue" dark block tile>Sign up</v-btn>
 
-                                                        <h4
-                                                            class="text-center grey--text mt-4 mb-3"
-                                                            style="font-family: 'montserrat'"
-                                                        >
-                                                            Or Sign up using
-                                                        </h4>
-                                                        <div
-                                                            class="d-flex justify-space-between align-center mx-10 mb-11"
-                                                        >
-                                                            <v-btn depressed outlined color="grey">
-                                                                <v-icon icon="mdi-google" color="red"></v-icon>
-                                                            </v-btn>
-                                                            <v-btn depressed outlined color="grey">
-                                                                <v-icon icon="mdi-facebook" color="blue"></v-icon>
-                                                            </v-btn>
-                                                            <v-btn depressed outlined color="grey">
-                                                                <v-icon icon="mdi-github" color="black"></v-icon>
-                                                            </v-btn>
-                                                        </div>
+                                                    
                                                     </v-col>
                                                 </v-row>
                                             </v-card-text>
@@ -270,9 +252,20 @@ export default {
 .v-application .rounded-bl-xl {
     border-bottom-left-radius: 300px !important;
     background-color: rgba(255, 240, 209, 0.8);
+    max-height: 80vh;
+    min-height: 80vh;
 }
 .v-application .rounded-br-xl {
     border-bottom-right-radius: 300px !important;
     background-color: rgba(255, 240, 209, 0.8);
+    max-height: 80vh;
+    min-height: 80vh;
+}
+.logincard {
+   
+    max-height: 75vh;
+    min-height: 75vh;
+    min-width: 60vw;
+    max-width: 70vw; 
 }
 </style>
