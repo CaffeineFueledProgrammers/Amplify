@@ -259,7 +259,6 @@ import {
     signInWithEmailAndPassword,
     updateProfile,
     GoogleAuthProvider,
-    FacebookAuthProvider,
     GithubAuthProvider,
     signInWithPopup,
 } from "firebase/auth";
@@ -308,9 +307,6 @@ export default {
                 .catch((error) => {
                     this.error_message = error.message;
                 });
-        },
-        facebookLogin() {
-            this.error_message = "Facebook login is not yet implemented";
         },
         githubLogin() {
             // The Github login method
