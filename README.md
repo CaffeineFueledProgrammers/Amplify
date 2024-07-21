@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://github.com/CaffeineFueledProgrammers/Amplify/raw/main/amplify_frontend/src/assets/A.png" alt="Amplify logo" width="128" />
+    <img src="https://github.com/CaffeineFueledProgrammers/Amplify/raw/main/amplify/src/assets/A.png" alt="Amplify logo" width="128" />
     <h1>Amplify</h1>
 </div>
 
@@ -12,9 +12,9 @@
 > **Roadmap**
 >
 > -   [x] Homepage
-> -   [ ] Login System
+> -   [x] Login System
 >     -   [ ] Sharing/Collaboration System
->     -   [ ] Text/Note Editor
+>     -   [x] Text/Note Editor
 >         -   [ ] AI Notes Processor
 >             -   [ ] Grammar Checking (via LanguageTool)
 >             -   [ ] Paraphrasing Assistant (via OpenAI)
@@ -35,43 +35,16 @@
 
 ### Requirements
 
--   **Back-End**
-    -   Python >= 3.10
-    -   Poetry >= 1.8.3
--   **Front-end**
-    -   NodeJS >= 22.2.0
-    -   Node Package Manager (NPM) >= 10.7.0
+-   NodeJS >= 22.2.0
+-   Node Package Manager (NPM) >= 10.7.0
 
-### Back-end Development Setup
+### Development Setup
 
 1. Clone the repository.
 
     ```bash
     git clone https://github.com/CaffeineFueledProgrammers/Amplify.git
-    cd Amplify
-    ```
-
-2. Install the requirements.
-
-    ```bash
-    poetry install
-    ```
-
-3. Run the development server.
-
-    ```bash
-    poetry run python -m amplify_backend dev
-    ```
-
-4. The server will be running at `http://localhost:8081`.
-
-### Front-end Development Setup
-
-1. Clone the repository.
-
-    ```bash
-    git clone https://github.com/CaffeineFueledProgrammers/Amplify.git
-    cd Amplify/amplify_frontend
+    cd Amplify/amplify
     ```
 
 2. Install the requirements.
