@@ -4,11 +4,14 @@
             <v-container>
                 <v-row align="center" justify="center">
                     <v-col cols="12" sm="10">
-                        <v-alert type="error" v-if="error_message" closable="true">
-                            {{ error_message }}
-                        </v-alert>
-                        <v-alert type="success" v-if="success_message" closable="true">
-                            {{ success_message }}
+                        <v-alert
+                            v-for="alert in alerts"
+                            :key="alert.id"
+                            :type="alert.type"
+                            closable
+                            @close="removeAlert(alert.id)"
+                        >
+                            {{ alert.message }}
                         </v-alert>
                         <v-card class="elevation-6 mt-10 logincard">
                             <v-window v-model="step">
@@ -143,8 +146,8 @@
                                             </div>
                                         </v-col>
 
-                                        <v-col cols="12" md="6" >
-                                            <v-card-text class="mt-12 ">
+                                        <v-col cols="12" md="6">
+                                            <v-card-text class="mt-12">
                                                 <h3 class="text-center" style="font-family: 'montserrat'">
                                                     Sign Up for an Account
                                                 </h3>
@@ -215,8 +218,6 @@
                                                         <v-btn color="blue" dark block tile @click="signup"
                                                             >Sign up</v-btn
                                                         >
-
-                                                    
                                                     </v-col>
                                                 </v-row>
                                             </v-card-text>
@@ -255,13 +256,27 @@ export default {
         signup_email: "",
         signup_password: "",
 
-        success_message: "",
-        error_message: "",
+        alerts: [],
     }),
     methods: {
+        addAlert(type, message) {
+            const alert = {
+                id: this.alerts.length,
+                type,
+                message,
+            };
+            this.alerts.push(alert);
+
+            // Automatically remove the alert after 5 seconds
+            setTimeout(() => {
+                this.removeAlert(alert.id);
+            }, 5000);
+        },
+        removeAlert(alertId) {
+            this.alerts = this.alerts.filter((alert) => alert.id !== alertId);
+        },
         login() {
             // The email/password login method
-            this.clearMessages();
             const store = useUserStore();
 
             signInWithEmailAndPassword(auth, this.login_email, this.login_password)
@@ -269,61 +284,53 @@ export default {
                     const user = userCredential.user;
                     const auth = getAuth();
                     console.log(auth.currentUser);
-                    this.success_message = "Login successful";
+                    this.addAlert("success", "Login successful!");
                 })
                 .catch((error) => {
-                    this.error_message = error.message;
+                    this.addAlert("error", error.message);
                 });
         },
         googleLogin() {
             // The Google login method
-            this.clearMessages();
             const store = useUserStore();
             const provider = new GoogleAuthProvider();
             signInWithPopup(auth, provider)
                 .then((result) => {
                     const user = result.user;
                     console.log(user);
-                    this.success_message = "Login successful";
+                    this.addAlert("success", "Login successful!");
                 })
                 .catch((error) => {
-                    this.error_message = error.message;
+                    this.addAlert("error", error.message);
                 });
         },
         githubLogin() {
             // The Github login method
-            this.clearMessages();
             const store = useUserStore();
             const provider = new GithubAuthProvider();
             signInWithPopup(auth, provider)
                 .then((result) => {
                     const user = result.user;
                     console.log(user);
-                    this.success_message = "Login successful";
+                    this.addAlert("success", "Login successful!");
                 })
                 .catch((error) => {
-                    this.error_message = error.message;
+                    this.addAlert("error", error.message);
                 });
         },
         signup() {
             // Create a new user account
-            this.clearMessages();
             const store = useUserStore();
 
             createUserWithEmailAndPassword(auth, this.signup_email, this.signup_password)
                 .then((userCredential) => {
                     const user = userCredential.user;
                     console.log(user);
-                    this.success_message = "Account created successfully";
+                    this.addAlert("success", "Account created successfully!");
                 })
                 .catch((error) => {
-                    this.error_message = error.message;
+                    this.addAlert("error", error.message);
                 });
-        },
-        clearMessages() {
-            // Clear the success and error message notifications
-            this.success_message = "";
-            this.error_message = "";
         },
     },
     mounted() {
@@ -351,10 +358,9 @@ export default {
     min-height: 80vh;
 }
 .logincard {
-   
     max-height: 75vh;
     min-height: 75vh;
     min-width: 60vw;
-    max-width: 70vw; 
+    max-width: 70vw;
 }
 </style>
