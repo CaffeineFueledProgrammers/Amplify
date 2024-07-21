@@ -18,9 +18,9 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - uses: actions/setup-node@v4
-              working-directory: ./amplify
               with:
                   node-version: ${{ matrix.node-version }}
+                  node-version-file: "./amplify/package.json"
                   cache: "npm"
             - run: npm ci
             - run: npm run build
