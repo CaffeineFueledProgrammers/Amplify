@@ -30,8 +30,7 @@
              <v-list-item prepend-icon="mdi-account-group-outline" title="Shared With You" value="sharedwithyou"></v-list-item>
               <v-list-item prepend-icon="mdi-card-multiple-outline" title="Anki Flashcards" value="flashcard"></v-list-item>
           <v-list-item prepend-icon="mdi-account" title="Account Settings " value="account"></v-list-item>
-          <router-link :to="{ path: '/billingpage' }"><v-list-item prepend-icon="mdi-cash" title="Subsriptions" value="subscribe"></v-list-item> </router-link>
-             <v-list-item prepend-icon="mdi-location-exit" title="Sign Out" value="signout"></v-list-item>
+          <router-link :to="{ path: '/' }"> <v-list-item prepend-icon="mdi-location-exit" title="Sign Out" value="signout"></v-list-item> </router-link>
         </v-list>
       </v-navigation-drawer>
       <v-main > 
