@@ -41,8 +41,9 @@
                             ></v-list-item>
                         </router-link>
                     </v-list>
+            
                 </v-navigation-drawer>
-                <v-main>
+                 <v-main>
                     <div class="note">
                         <notes />
                         <sharedflashcard />
@@ -88,6 +89,6 @@ export default {
 v-dashtitle {
     font-size: 5rem;
     font-weight: bold;
-    margin: 20px;
+  
 }
 </style>
