@@ -23,8 +23,11 @@
                         <v-card-title v-else>Untitled</v-card-title>
                         <v-card-subtitle>{{ note.content.substring(0, 50) }}</v-card-subtitle>
                         <template v-slot:actions>
-                            <v-btn text="✎ Edit" :id="note.id" @click="editNote(note.id)"></v-btn>
+                            <v-btn :id="note.id" @click="editNote(note.id)"> <v-icon>mdi-pencil</v-icon> Edit </v-btn>
                             <p class="notedate">Edited {{ formatTimeModified(note.time_modified) }}</p>
+                            <v-btn :id="note.id" @click="deleteNote(note.id)">
+                                <v-icon>mdi-delete</v-icon>
+                            </v-btn>
                         </template>
                     </v-card>
 
@@ -38,7 +41,7 @@
 <script>
 import { firebaseApp, db } from "@/firebasehandler";
 import { useUserStore } from "@/stores/user";
-import { getFirestore, collection, getDocs, where, query } from "firebase/firestore";
+import { getFirestore, collection, getDocs, deleteDoc, where, query, doc } from "firebase/firestore";
 
 export default {
     data: () => ({
@@ -68,22 +71,33 @@ export default {
         editNote(note_id) {
             this.$router.push({ path: "/noteeditor", query: { note_id: note_id } });
         },
+        async deleteNote(note_id) {
+            try {
+                const docRef = await deleteDoc(doc(db, "notes", note_id));
+                this.addAlert("success", "The note with ID `" + note_id + "` deleted successfully.");
+            } catch (error) {
+                this.addAlert("error", "Error deleting note: " + error);
+            }
+            this.updateNotesList();
+        },
+        async updateNotesList() {
+            const store = useUserStore();
+            try {
+                const querySnapshot = await getDocs(
+                    query(collection(db, "notes"), where("owner", "==", store.userData.uid))
+                );
+                const notes = querySnapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }));
+                this.notes = notes;
+            } catch (error) {
+                this.addAlert("error", "Error fetching notes:" + error);
+            }
+        },
     },
     async created() {
-        const store = useUserStore();
-
-        try {
-            const querySnapshot = await getDocs(
-                query(collection(db, "notes"), where("owner", "==", store.userData.uid))
-            );
-            const notes = querySnapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            }));
-            this.notes = notes;
-        } catch (error) {
-            this.addAlert("error", "Error fetching notes:" + error);
-        }
+        this.updateNotesList();
     },
 };
 </script>
