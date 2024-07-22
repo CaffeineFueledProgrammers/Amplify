@@ -91,4 +91,5 @@ v-dashtitle {
     font-weight: bold;
   
 }
+
 </style>

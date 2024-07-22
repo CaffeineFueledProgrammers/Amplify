@@ -46,10 +46,19 @@
                                         <v-payinfo> Account Number : 094544248455 </v-payinfo>
                                     </div>
                                     <div v-else>No QR Code available</div>
-                                    <div v-else>No QR Code available</div>
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-btn color="primary" text @click="showQRCode = false">Close</v-btn>
+                                </v-card-actions>
+                            </v-card>
+                        </v-dialog>
+
+                        <v-dialog v-model="showProcessing" max-width="500">
+                            <v-card background-color="#1e1e24">
+                                <v-card-title>Processing Payment</v-card-title>
+                                <v-card-text>Please wait for the email confirmation.</v-card-text>
+                                <v-card-actions>
+                                    <v-btn color="#566498" text @click="closeProcessingDialog">Close</v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
@@ -73,6 +82,7 @@ export default {
             bankRefNumber: "",
             showQRCode: false,
             qrCodeSrc: "",
+            showProcessing: false,
         };
     },
     watch: {
@@ -102,7 +112,18 @@ export default {
             };
 
             console.log("Payment Data:", paymentData);
+            this.showProcessing = true;
             // Perform your form submission or processing logic here
+        },
+        closeProcessingDialog() {
+            this.showProcessing = false;
+            this.paymentMethod = "";
+            this.gcashNumber = "";
+            this.gcashName = "";
+            this.gcashRefNumber = "";
+            this.bankAccountNumber = "";
+            this.bankAccountName = "";
+            this.bankRefNumber = "";
         },
     },
 };

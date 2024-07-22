@@ -18,7 +18,7 @@
             </div>
             <v-row v-else dense>
                 <v-col v-for="(note, i) in notes" :key="i" cols="12" md="3">
-                    <v-card class="mx-auto" color="surface-variant" max-width="344" variant="tonal">
+                    <v-card class="mx-20 savednotes" color="surface-variant" max-width="344" variant="tonal">
                         <v-card-title v-if="note.title.length > 0">{{ note.title }}</v-card-title>
                         <v-card-title v-else>Untitled</v-card-title>
                         <v-card-subtitle>{{ note.content.substring(0, 50) }}</v-card-subtitle>
@@ -111,5 +111,9 @@ export default {
 }
 .nonote {
     margin-top: 5vh;
+}
+.savednotes {
+    margin-top: 5vh;
+  
 }
 </style>
