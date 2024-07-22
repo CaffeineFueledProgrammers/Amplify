@@ -38,7 +38,6 @@
 
 <style>
 v-amplify_footer {
-
     margin-left: 10%;
     background-image: url();
 }

@@ -1,13 +1,13 @@
 <template>
-  <v-app>
-    <v-main>
-      <router-view />
-    </v-main>
+    <v-app>
+        <v-main>
+            <router-view />
+        </v-main>
 
-    <AppFooter />
-  </v-app>
+        <AppFooter />
+    </v-app>
 </template>
 
 <script setup>
-  //
+//
 </script>

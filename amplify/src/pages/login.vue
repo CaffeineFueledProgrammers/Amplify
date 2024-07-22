@@ -4,11 +4,15 @@
             <v-container>
                 <v-row align="center" justify="center">
                     <v-col cols="12" sm="10">
-                        <v-alert type="error" v-if="error_message" closable="true">
-                            {{ error_message }}
-                        </v-alert>
-                        <v-alert type="success" v-if="success_message" closable="true">
-                            {{ success_message }}
+                        <!-- TODO: do not span whole viewport width -->
+                        <v-alert
+                            v-for="alert in alerts"
+                            :key="alert.id"
+                            :type="alert.type"
+                            closable
+                            @close="removeAlert(alert.id)"
+                        >
+                            {{ alert.message }}
                         </v-alert>
                         <v-card class="elevation-6 mt-10 logincard">
                             <v-window v-model="step">
@@ -53,7 +57,12 @@
                                                                 </v-checkbox>
                                                             </v-col>
                                                             <v-col cols="12" sm="5">
-                                                                <span class="caption blue--text">Forgot password</span>
+                                                                <!-- TODO: cursor not changing on hover -->
+                                                                <span
+                                                                    class="caption blue--text"
+                                                                    @click="sendRecoveryEmail"
+                                                                    >Forgot password</span
+                                                                >
                                                             </v-col>
                                                         </v-row>
                                                         <v-btn color="blue" dark block tile @click="login">Login</v-btn>
@@ -68,14 +77,6 @@
                                                         >
                                                             <v-btn depressed outlined color="grey" @click="googleLogin">
                                                                 <v-icon icon="mdi-google" color="red"></v-icon>
-                                                            </v-btn>
-                                                            <v-btn
-                                                                depressed
-                                                                outlined
-                                                                color="grey"
-                                                                @click="facebookLogin"
-                                                            >
-                                                                <v-icon icon="mdi-facebook" color="blue"></v-icon>
                                                             </v-btn>
                                                             <v-btn depressed outlined color="grey" @click="githubLogin">
                                                                 <v-icon icon="mdi-github" color="black"></v-icon>
@@ -143,8 +144,8 @@
                                             </div>
                                         </v-col>
 
-                                        <v-col cols="12" md="6" >
-                                            <v-card-text class="mt-12 ">
+                                        <v-col cols="12" md="6">
+                                            <v-card-text class="mt-12">
                                                 <h3 class="text-center" style="font-family: 'montserrat'">
                                                     Sign Up for an Account
                                                 </h3>
@@ -215,8 +216,6 @@
                                                         <v-btn color="blue" dark block tile @click="signup"
                                                             >Sign up</v-btn
                                                         >
-
-                                                    
                                                     </v-col>
                                                 </v-row>
                                             </v-card-text>
@@ -243,6 +242,7 @@ import {
     GoogleAuthProvider,
     GithubAuthProvider,
     signInWithPopup,
+    sendPasswordResetEmail,
 } from "firebase/auth";
 
 export default {
@@ -255,78 +255,114 @@ export default {
         signup_email: "",
         signup_password: "",
 
-        success_message: "",
-        error_message: "",
+        alerts: [],
     }),
     methods: {
+        addAlert(type, message) {
+            const alert = {
+                id: this.alerts.length,
+                type,
+                message,
+            };
+            this.alerts.push(alert);
+
+            // Automatically remove the alert after 5 seconds
+            setTimeout(() => {
+                this.removeAlert(alert.id);
+            }, 5000);
+        },
+        removeAlert(alertId) {
+            this.alerts = this.alerts.filter((alert) => alert.id !== alertId);
+        },
         login() {
             // The email/password login method
-            this.clearMessages();
             const store = useUserStore();
 
             signInWithEmailAndPassword(auth, this.login_email, this.login_password)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    const auth = getAuth();
-                    console.log(auth.currentUser);
-                    this.success_message = "Login successful";
+                    store.login(user);
+                    this.addAlert("success", "Login successful!");
+                    this.$router.push("/dashboard");
                 })
                 .catch((error) => {
-                    this.error_message = error.message;
+                    this.addAlert("error", error.message);
+                    console.log(error);
                 });
         },
         googleLogin() {
             // The Google login method
-            this.clearMessages();
             const store = useUserStore();
             const provider = new GoogleAuthProvider();
             signInWithPopup(auth, provider)
                 .then((result) => {
                     const user = result.user;
-                    console.log(user);
-                    this.success_message = "Login successful";
+                    store.login(user);
+                    this.addAlert("success", "Login successful!");
+                    this.$router.push("/dashboard");
                 })
                 .catch((error) => {
-                    this.error_message = error.message;
+                    this.addAlert("error", error.message);
                 });
         },
         githubLogin() {
             // The Github login method
-            this.clearMessages();
             const store = useUserStore();
             const provider = new GithubAuthProvider();
             signInWithPopup(auth, provider)
                 .then((result) => {
                     const user = result.user;
-                    console.log(user);
-                    this.success_message = "Login successful";
+                    store.login(user);
+                    this.addAlert("success", "Login successful!");
+                    this.$router.push("/dashboard");
                 })
                 .catch((error) => {
-                    this.error_message = error.message;
+                    this.addAlert("error", error.message);
                 });
         },
         signup() {
             // Create a new user account
-            this.clearMessages();
             const store = useUserStore();
 
             createUserWithEmailAndPassword(auth, this.signup_email, this.signup_password)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    console.log(user);
-                    this.success_message = "Account created successfully";
+                    const auth = getAuth();
+
+                    updateProfile(auth.currentUser, {
+                        displayName: `${this.signup_first_name} ${this.signup_last_name}`,
+                    })
+                        .then(() => {
+                            console.log("User profile updated successfully");
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                    store.login(user);
+                    this.addAlert("success", "Account created successfully!");
+                    this.$router.push("/dashboard");
                 })
                 .catch((error) => {
-                    this.error_message = error.message;
+                    this.addAlert("error", error.message);
                 });
         },
-        clearMessages() {
-            // Clear the success and error message notifications
-            this.success_message = "";
-            this.error_message = "";
+        sendRecoveryEmail() {
+            sendPasswordResetEmail(auth, this.login_email)
+                .then(() => {
+                    this.addAlert("success", "Password reset email sent! Please check your inbox.");
+                })
+                .catch((error) => {
+                    this.addAlert("error", error.message);
+                });
         },
     },
     mounted() {
+        const store = useUserStore();
+
+        if (store.isLoggedIn) {
+            this.$router.push("/dashboard");
+        }
+
         if (this.$route.query.section === "signup") {
             this.step = 2;
         }
@@ -351,10 +387,9 @@ export default {
     min-height: 80vh;
 }
 .logincard {
-   
     max-height: 75vh;
     min-height: 75vh;
     min-width: 60vw;
-    max-width: 70vw; 
+    max-width: 70vw;
 }
 </style>

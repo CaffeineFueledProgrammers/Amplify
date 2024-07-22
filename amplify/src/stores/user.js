@@ -1,32 +1,29 @@
 import { defineStore } from "pinia";
 
-// You can name the return value of `defineStore()` anything you want,
-// but it's best to use the name of the store and surround it with `use`
-// and `Store` (e.g. `useUserStore`, `useCartStore`, `useProductStore`)
-// the first argument is a unique id of the store across your application
 export const useUserStore = defineStore("user", {
-    state: () => ({ username: null, notes: [] }),
+    state: () => ({
+        // Initialize state from localStorage if available
+        _isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn")) || false,
+        _userData: JSON.parse(localStorage.getItem("userData")) || null,
+    }),
     getters: {
-        first_name: (state) => state.first_name,
-        last_name: (state) => state.last_name,
-        email: (state) => state.email,
-        notes: (state) => state.notes,
+        isLoggedIn: (state) => state._isLoggedIn,
+        userData: (state) => state._userData,
     },
     actions: {
-        setEmail(email) {
-            this.email = email;
+        login(userData) {
+            this._isLoggedIn = true;
+            this._userData = userData;
+            // Persist to localStorage
+            localStorage.setItem("isLoggedIn", JSON.stringify(true));
+            localStorage.setItem("userData", JSON.stringify(userData));
         },
-        addNote(note) {
-            this.notes.push(note);
-        },
-        getNote(index) {
-            return this.notes[index];
-        },
-        removeNote(index) {
-            this.notes.splice(index, 1);
-        },
-        clearNotes() {
-            this.notes = [];
+        logout() {
+            this._isLoggedIn = false;
+            this._userData = null;
+            // Clear from localStorage
+            localStorage.setItem("isLoggedIn", JSON.stringify(false));
+            localStorage.removeItem("userData");
         },
     },
 });

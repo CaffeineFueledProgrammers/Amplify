@@ -4,16 +4,26 @@
             <img class="smoke_keyfeat" src="@/assets/smoke@2x.png" height="1000" />
             <v-keyfeat class="d-flex align-center flex-column">
                 <v-keyfeat_title class="d-flex justify-center">
-                    <img  src="@/assets/A.png" alt="Amplify Logo" class="logo"/>
-                    <v-keyfeattxt class="d-flex align-center flex-column" data-aos="fade-up"  data-aos-once="false"  data-aos-duration="500">
+                    <img src="@/assets/A.png" alt="Amplify Logo" class="logo" />
+                    <v-keyfeattxt
+                        class="d-flex align-center flex-column"
+                        data-aos="fade-up"
+                        data-aos-once="false"
+                        data-aos-duration="500"
+                    >
                         <v-keyfeattxt2 class="d-flex align-center">
                             <div class="mplify">MPLIFY</div>
                             <div class="keyfeatures">Key Features</div>
                         </v-keyfeattxt2>
                         <b class="download_now">LEARN MORE</b>
                     </v-keyfeattxt>
-                </v-keyfeat_title >
-                <div class="d-flex align-center justify-center"  data-aos="fade-up"  data-aos-once="false"  data-aos-duration="500">
+                </v-keyfeat_title>
+                <div
+                    class="d-flex align-center justify-center"
+                    data-aos="fade-up"
+                    data-aos-once="false"
+                    data-aos-duration="500"
+                >
                     <v-row class="keyfeat_items">
                         <v-col order="1">
                             <div class="d-flex align-center justify-center flex-column pa-2 ma-2">
@@ -57,7 +67,7 @@
 @import url(https://fonts.googleapis.com/css2?family=HindGuntur:wght@400;700&display=swap);
 
 main {
-     min-width: 100vw;
+    min-width: 100vw;
     min-height: 100vh;
     background-color: #131419;
 }
@@ -118,21 +128,21 @@ main {
         font-size: 0.8rem;
     }
     .title {
-        font-size: 1rem;}
+        font-size: 1rem;
+    }
     .key_description {
         font-size: 1rem;
     }
-    .logo{
+    .logo {
         width: 22vw;
         height: 30vh;
     }
-    .keyfeat_items{
+    .keyfeat_items {
         flex-direction: column;
-      margin: 1%;
-  
+        margin: 1%;
     }
-    }
-    @media screen and (min-width: 800) and (max-width: 1100px) {
+}
+@media screen and (min-width: 800) and (max-width: 1100px) {
     .mplify {
         font-size: 3rem;
         margin-top: 20%;
@@ -145,15 +155,14 @@ main {
         font-size: 0.8rem;
     }
     .title {
-        font-size: 1rem;}
+        font-size: 1rem;
+    }
     .key_description {
         font-size: 1rem;
     }
-    .logo{
+    .logo {
         width: 28vw;
         height: 35vh;
     }
-   
 }
-
 </style>
