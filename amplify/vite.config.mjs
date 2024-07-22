@@ -56,6 +56,14 @@ export default defineConfig({
         host: "0.0.0.0",
         port: 8080,
         strictPort: true,
+        proxy: {
+            // Proxy requests from /api to LanguageTool API
+            "/api/grammar-check": {
+                target: "https://api.languagetool.org/v2/check",
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api\/grammar-check/, ""),
+            },
+        },
     },
     clearScreen: false,
 });

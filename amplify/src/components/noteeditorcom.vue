@@ -1,8 +1,7 @@
 <template>
     <v-app>
         <v-main class="noteditorcom">
-            <v-row >
-
+            <v-row>
                 <v-col cols="8">
                     <v-card>
                         <v-card-title>
@@ -149,33 +148,51 @@
                     </v-card>
                 </v-col>
                 <v-col cols="4">
-            <v-card class="grammarchecker">
-              <v-card-text>
-            
-                <p class="text-h4 font-weight-black">Grammar Checker</p>
-                <p>Amplify</p>
-             
-              </v-card-text>
-              <v-card-actions>
-                <v-btn color="#566498" text="Check for Errors" variant="text" @click="reveal = true"></v-btn>
-              </v-card-actions>
-              <v-expand-transition>
-                <v-card v-if="reveal" class="position-absolute w-100" height="100%" style="bottom: 0">
-                  <v-card-text class="pb-0">
-                    <p class="text-h4">Grammar Checker</p>
-                    <p class="text-medium-emphasis">
-                         <!-- Put the results of the grammar checker here -->
-
-
-                    </p>
-                  </v-card-text>
-                  <v-card-actions class="pt-0">
-                    <v-btn color="#566498" text="Close" variant="text" @click="reveal = false"></v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-expand-transition>
-            </v-card>
-                         <v-alert 
+                    <v-card class="grammarchecker">
+                        <v-card-text>
+                            <p class="text-h4 font-weight-black">Grammar Checker</p>
+                            <p>Amplify</p>
+                        </v-card-text>
+                        <v-card-actions>
+                            <v-btn
+                                color="#566498"
+                                text="Check for Errors"
+                                variant="text"
+                                @click="performGrammarCheck"
+                            ></v-btn>
+                        </v-card-actions>
+                        <v-expand-transition>
+                            <v-card v-if="reveal" class="position-absolute w-100" height="100%" style="bottom: 0">
+                                <v-card-text class="pb-0">
+                                    <p class="text-h4">Grammar Checker</p>
+                                    <v-alert
+                                        v-if="grammar_check_results.length > 0"
+                                        v-for="match in grammar_check_results"
+                                        class="mb-2"
+                                    >
+                                        <v-col>
+                                            <v-alert-title>{{ match.shortMessage }}</v-alert-title>
+                                            <v-alert-subtitle>{{ match.message }}</v-alert-subtitle
+                                            ><br />
+                                            <v-btn
+                                                v-for="replacement in match.replacements"
+                                                text
+                                                @click="
+                                                    replaceText($event, match.offset, match.length, replacement.value)
+                                                "
+                                                >{{ replacement.value }}</v-btn
+                                            >
+                                        </v-col>
+                                    </v-alert>
+                                    <h2 v-else><br />We're all good!<br /></h2>
+                                </v-card-text>
+                                <v-card-actions class="pt-0">
+                                    <v-btn color="#566498" text="Close" variant="text" @click="reveal = false"></v-btn>
+                                </v-card-actions>
+                            </v-card>
+                        </v-expand-transition>
+                    </v-card>
+                    <v-alert
                         class="notealert"
                         v-for="alert in alerts"
                         :key="alert.id"
@@ -185,7 +202,7 @@
                     >
                         {{ alert.message }}
                     </v-alert>
-          </v-col>
+                </v-col>
             </v-row>
         </v-main>
     </v-app>
@@ -197,7 +214,7 @@ import { useRoute } from "vue-router";
 import { firebaseApp, db } from "@/firebasehandler";
 import { useUserStore } from "@/stores/user";
 import { getFirestore, serverTimestamp, addDoc, getDoc, updateDoc, doc, collection } from "firebase/firestore";
-import axios from 'axios';
+import axios from "axios";
 
 export default {
     name: "NoteEditor",
@@ -208,11 +225,12 @@ export default {
         content: "",
         alerts: [],
         reveal: false,
+        grammar_check_results: [],
     }),
     methods: {
         addAlert(type, message) {
             const alert = {
-                id: this.alerts.length +1,
+                id: this.alerts.length + 1,
                 type,
                 message,
             };
@@ -235,6 +253,51 @@ export default {
         updateContent() {
             var divContents = document.getElementById("editor").textContent;
             this.content = divContents;
+        },
+        performGrammarCheck() {
+            this.reveal = true;
+
+            const options = {
+                method: "POST",
+                url: "/api/grammar-check",
+                headers: {
+                    accept: "application/json",
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                data: {
+                    text: this.content,
+                    language: "auto",
+                    level: "picky",
+                },
+            };
+
+            if (!this.content) {
+                this.addAlert("info", "There are no contents to check for grammar errors.");
+                return;
+            }
+
+            try {
+                axios(options)
+                    .then((response) => {
+                        this.grammar_check_results = response.data.matches;
+                        console.log(response.data.matches);
+                    })
+                    .catch((error) => {
+                        this.addAlert("error", "Error checking grammar: " + error);
+                    });
+            } catch (error) {
+                this.addAlert("error", "Error checking grammar: " + error);
+            }
+        },
+        replaceText(event, offset, length, replacementValue) {
+            console.log(offset, length, replacementValue);
+
+            document.getElementById("editor").textContent =
+                this.content.substring(0, offset) + replacementValue + this.content.substring(offset + length);
+
+            this.updateContent();
+            this.grammar_check_results = [];
+            this.performGrammarCheck();
         },
         async saveNote() {
             try {
@@ -274,7 +337,7 @@ export default {
                 if (docSnap.exists()) {
                     this.note = { id: docSnap.id, ...docSnap.data() };
                     this.title = this.note.title;
-                    console.log(this.note);
+                    this.content = this.note.content;
                 } else {
                     console.log("No such document!");
                     this.$router.push("/");
@@ -308,7 +371,6 @@ export default {
 .noteeditorcom {
     padding: 20px;
     max-height: 90vh;
-    
 }
 .notealert {
     margin-top: 10px;
@@ -316,8 +378,8 @@ export default {
     max-width: 35vw;
     z-index: 1;
 }
-.grammarchecker{
+.grammarchecker {
     max-height: 80vh;
-    height: 50vh;
+    min-height: 50vh;
 }
 </style>
