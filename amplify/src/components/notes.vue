@@ -11,7 +11,8 @@
                 <v-row justify="center">
                     <v-col cols="auto">
                         <router-link :to="{ path: '/noteeditor' }"
-                        ><v-btn class="nonote" text="Start Writing"></v-btn></router-link>
+                            ><v-btn class="nonote" text="Start Writing"></v-btn
+                        ></router-link>
                     </v-col>
                 </v-row>
             </div>
@@ -21,7 +22,7 @@
                         <v-card-title>{{ note.title }}</v-card-title>
                         <v-card-subtitle>{{ note.content.substring(0, 20) }}</v-card-subtitle>
                         <template v-slot:actions>
-                            <v-btn text=""></v-btn>
+                            <v-btn text="✎ Edit" :id="note.id" @click="editNote(note.id)"></v-btn>
                             <p class="notedate">Edited {{ formatTimeModified(note.time_modified) }}</p>
                         </template>
                     </v-card>
@@ -63,6 +64,9 @@ export default {
         formatTimeModified(timestamp) {
             return new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000).toLocaleDateString();
         },
+        editNote(note_id) {
+            this.$router.push({ path: "/noteeditor", query: { id: note_id } });
+        },
     },
     async created() {
         const store = useUserStore();
@@ -81,7 +85,6 @@ export default {
 };
 </script>
 <style>
-
 .notedate {
     font-size: 0.8rem;
     color: #a8a8a8;
@@ -91,6 +94,5 @@ export default {
 }
 .nonote {
     margin-top: 5vh;
-  
 }
 </style>
