@@ -3,9 +3,15 @@
         <v-card>
             <v-layout>
                 <v-navigation-drawer v-model="drawer" :rail="rail" permanent @click="rail = false">
-                    <v-list-item title="username" nav>
+                    <v-list-item :title="displayName" nav>
                         <template v-slot:append>
-                            <v-btn icon="mdi-chevron-left" variant="text" @click.stop="rail = !rail"></v-btn>
+                            <v-btn
+                                v-if="rail"
+                                icon="mdi-chevron-right"
+                                variant="text"
+                                @click.stop="rail = false"
+                            ></v-btn>
+                            <v-btn v-else icon="mdi-chevron-left" variant="text" @click.stop="rail = true"></v-btn>
                         </template>
                     </v-list-item>
 
@@ -57,6 +63,7 @@ export default {
         return {
             drawer: true,
             rail: true,
+            displayName: "Amplify User",
         };
     },
     methods: {
@@ -65,6 +72,11 @@ export default {
             store.logout();
             this.$router.push("/");
         },
+    },
+    mounted() {
+        const store = useUserStore();
+
+        this.displayName = store.userData.displayName;
     },
 };
 </script>
