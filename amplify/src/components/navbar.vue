@@ -7,7 +7,7 @@
         <router-link to="/"><v-btn class="button">Home</v-btn></router-link>
         <router-link to="/pricing"><v-btn class="button">pricing</v-btn></router-link>
         <router-link to="/login" v-if="!isLoggedIn"><v-btn class="button">Log In</v-btn></router-link>
-        <router-link @click="logout" v-else><v-btn class="button">Log Out</v-btn></router-link>
+        <router-link v-else><v-btn class="button" @click="logout">Log Out</v-btn></router-link>
     </v-app-bar>
 </template>
 
@@ -40,6 +40,7 @@ export default {
         logout() {
             const store = useUserStore();
             store.logout();
+            this.$router.push("/");
         },
     },
     setup() {

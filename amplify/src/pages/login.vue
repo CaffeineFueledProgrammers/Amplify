@@ -283,6 +283,7 @@ export default {
                     const user = userCredential.user;
                     store.login(user);
                     this.addAlert("success", "Login successful!");
+                    this.$router.push("/dashboard");
                 })
                 .catch((error) => {
                     this.addAlert("error", error.message);
@@ -298,6 +299,7 @@ export default {
                     const user = result.user;
                     store.login(user);
                     this.addAlert("success", "Login successful!");
+                    this.$router.push("/dashboard");
                 })
                 .catch((error) => {
                     this.addAlert("error", error.message);
@@ -312,6 +314,7 @@ export default {
                     const user = result.user;
                     store.login(user);
                     this.addAlert("success", "Login successful!");
+                    this.$router.push("/dashboard");
                 })
                 .catch((error) => {
                     this.addAlert("error", error.message);
@@ -337,6 +340,7 @@ export default {
                         });
                     store.login(user);
                     this.addAlert("success", "Account created successfully!");
+                    this.$router.push("/dashboard");
                 })
                 .catch((error) => {
                     this.addAlert("error", error.message);
@@ -354,6 +358,10 @@ export default {
     },
     mounted() {
         const store = useUserStore();
+
+        if (store.isLoggedIn) {
+            this.$router.push("/dashboard");
+        }
 
         if (this.$route.query.section === "signup") {
             this.step = 2;

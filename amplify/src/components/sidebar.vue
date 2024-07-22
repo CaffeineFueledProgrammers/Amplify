@@ -31,6 +31,7 @@
                                 prepend-icon="mdi-location-exit"
                                 title="Sign Out"
                                 value="signout"
+                                @click="logout"
                             ></v-list-item>
                         </router-link>
                     </v-list>
@@ -38,7 +39,7 @@
                 <v-main>
                     <div class="note">
                         <notes />
-                        <sharedflashcar />
+                        <sharedflashcard />
                     </div>
                 </v-main>
             </v-layout>
@@ -47,14 +48,23 @@
 </template>
 
 <script>
-import sharedflashcar from "./sharedflashcar.vue";
+import sharedflashcard from "./sharedflashcard";
+import { useUserStore } from "@/stores/user";
+
 export default {
-    components: { sharedflashcar },
+    components: { sharedflashcard },
     data() {
         return {
             drawer: true,
             rail: true,
         };
+    },
+    methods: {
+        logout() {
+            const store = useUserStore();
+            store.logout();
+            this.$router.push("/");
+        },
     },
 };
 </script>
