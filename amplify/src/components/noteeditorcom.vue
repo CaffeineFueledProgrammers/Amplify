@@ -1,18 +1,9 @@
 <template>
     <v-app>
         <v-main class="noteditorcom">
-            <v-row justify="center">
-                <v-col cols="20" md="60">
-                    <!-- TODO: make this float like weeeee -->
-                    <v-alert
-                        v-for="alert in alerts"
-                        :key="alert.id"
-                        :type="alert.type"
-                        closable
-                        @close="removeAlert(alert.id)"
-                    >
-                        {{ alert.message }}
-                    </v-alert>
+            <v-row >
+
+                <v-col cols="8">
                     <v-card>
                         <v-card-title>
                             <input v-model="title" class="editable-title" placeholder="Note Title" />
@@ -157,6 +148,44 @@
                         </v-card-actions>
                     </v-card>
                 </v-col>
+                <v-col cols="4">
+            <v-card class="grammarchecker">
+              <v-card-text>
+            
+                <p class="text-h4 font-weight-black">Grammar Checker</p>
+                <p>Amplify</p>
+             
+              </v-card-text>
+              <v-card-actions>
+                <v-btn color="#566498" text="Check for Errors" variant="text" @click="reveal = true"></v-btn>
+              </v-card-actions>
+              <v-expand-transition>
+                <v-card v-if="reveal" class="position-absolute w-100" height="100%" style="bottom: 0">
+                  <v-card-text class="pb-0">
+                    <p class="text-h4">Grammar Checker</p>
+                    <p class="text-medium-emphasis">
+                         <!-- Put the results of the grammar checker here -->
+
+
+                    </p>
+                  </v-card-text>
+                  <v-card-actions class="pt-0">
+                    <v-btn color="#566498" text="Close" variant="text" @click="reveal = false"></v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-expand-transition>
+            </v-card>
+                         <v-alert 
+                        class="notealert"
+                        v-for="alert in alerts"
+                        :key="alert.id"
+                        :type="alert.type"
+                        closable
+                        @close="removeAlert(alert.id)"
+                    >
+                        {{ alert.message }}
+                    </v-alert>
+          </v-col>
             </v-row>
         </v-main>
     </v-app>
@@ -168,6 +197,7 @@ import { useRoute } from "vue-router";
 import { firebaseApp, db } from "@/firebasehandler";
 import { useUserStore } from "@/stores/user";
 import { getFirestore, serverTimestamp, addDoc, getDoc, updateDoc, doc, collection } from "firebase/firestore";
+import axios from 'axios';
 
 export default {
     name: "NoteEditor",
@@ -177,11 +207,12 @@ export default {
         title: "",
         content: "",
         alerts: [],
+        reveal: false,
     }),
     methods: {
         addAlert(type, message) {
             const alert = {
-                id: this.alerts.length,
+                id: this.alerts.length +1,
                 type,
                 message,
             };
@@ -277,5 +308,16 @@ export default {
 .noteeditorcom {
     padding: 20px;
     max-height: 90vh;
+    
+}
+.notealert {
+    margin-top: 10px;
+    width: 30vw;
+    max-width: 35vw;
+    z-index: 1;
+}
+.grammarchecker{
+    max-height: 80vh;
+    height: 50vh;
 }
 </style>
