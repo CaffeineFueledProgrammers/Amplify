@@ -1,6 +1,10 @@
 <template>
     <v-app>
         <v-main>
+            <!-- TODO: do not span whole viewport width -->
+            <v-alert v-for="alert in alerts" :key="alert.id" :type="alert.type" closable @close="removeAlert(alert.id)">
+                {{ alert.message }}
+            </v-alert>
             <div v-if="notes.length < 1">
                 <!-- TODO: add padding -->
                 <p class="text-center text-h5 nonote">You currently do not have any notes.</p>
@@ -18,7 +22,7 @@
                         <v-card-subtitle>{{ note.content.substring(0, 20) }}</v-card-subtitle>
                         <template v-slot:actions>
                             <v-btn text=""></v-btn>
-                            <p class="notedate">Edited {{ note.time_modified }}</p>
+                            <p class="notedate">Edited {{ formatTimeModified(note.time_modified) }}</p>
                         </template>
                     </v-card>
 
@@ -30,17 +34,49 @@
 </template>
 
 <script>
-import { firebaseApp } from "@/firebasehandler";
+import { firebaseApp, notesRef } from "@/firebasehandler";
 import { useUserStore } from "@/stores/user";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, getDocs, where, query } from "firebase/firestore";
 
 export default {
     data: () => ({
         notes: [],
+        alerts: [],
     }),
-    setup() {
+    methods: {
+        addAlert(type, message) {
+            const alert = {
+                id: this.alerts.length,
+                type,
+                message,
+            };
+            this.alerts.push(alert);
+
+            // Automatically remove the alert after 5 seconds
+            setTimeout(() => {
+                this.removeAlert(alert.id);
+            }, 5000);
+        },
+        removeAlert(alertId) {
+            this.alerts = this.alerts.filter((alert) => alert.id !== alertId);
+        },
+        formatTimeModified(timestamp) {
+            return new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000).toLocaleDateString();
+        },
+    },
+    async created() {
         const store = useUserStore();
-        const db = getFirestore(firebaseApp);
+
+        try {
+            const querySnapshot = await getDocs(query(notesRef, where("owner", "==", store.userData.uid)));
+            const notes = querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            this.notes = notes;
+        } catch (error) {
+            this.addAlert("error", "Error fetching notes:" + error);
+        }
     },
 };
 </script>
