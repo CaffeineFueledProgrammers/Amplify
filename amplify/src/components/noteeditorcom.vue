@@ -3,6 +3,16 @@
         <v-main class="noteditorcom">
             <v-row justify="center">
                 <v-col cols="20" md="60">
+                    <!-- TODO: make this float like weeeee -->
+                    <v-alert
+                        v-for="alert in alerts"
+                        :key="alert.id"
+                        :type="alert.type"
+                        closable
+                        @close="removeAlert(alert.id)"
+                    >
+                        {{ alert.message }}
+                    </v-alert>
                     <v-card>
                         <v-card-title>
                             <input v-model="title" class="editable-title" placeholder="Note Title" />
@@ -157,7 +167,7 @@ import { ref } from "vue";
 import { useRoute } from "vue-router";
 import { firebaseApp, db } from "@/firebasehandler";
 import { useUserStore } from "@/stores/user";
-import { getFirestore, collection, getDoc, doc } from "firebase/firestore";
+import { getFirestore, serverTimestamp, addDoc, getDoc, updateDoc, doc, collection } from "firebase/firestore";
 
 export default {
     name: "NoteEditor",
@@ -166,39 +176,62 @@ export default {
         alerts: [],
         title: "",
         content: "",
+        alerts: [],
     }),
-    setup() {
-        const editor = ref(null);
-        const content = ref("");
-        const title = ref("");
+    methods: {
+        addAlert(type, message) {
+            const alert = {
+                id: this.alerts.length,
+                type,
+                message,
+            };
+            this.alerts.push(alert);
 
-        const formatText = (command, value = null) => {
+            // Automatically remove the alert after 5 seconds
+            setTimeout(() => {
+                this.removeAlert(alert.id);
+            }, 5000);
+        },
+        removeAlert(alertId) {
+            this.alerts = this.alerts.filter((alert) => alert.id !== alertId);
+        },
+        formatText(command, value = null) {
             document.execCommand(command, false, value);
-        };
-
-        const highlightText = () => {
+        },
+        highlightText() {
             document.execCommand("hiliteColor", false, "#a8a8a8");
-        };
-
-        const updateContent = () => {
-            content.value = editor.value.innerHTML;
-        };
-
-        const saveNote = () => {
-            console.log(title.value);
-            console.log(content.value);
-            // TODO: save logic here
-        };
-
-        return {
-            editor,
-            formatText,
-            highlightText,
-            content,
-            title,
-            saveNote,
-            updateContent,
-        };
+        },
+        updateContent() {
+            var divContents = document.getElementById("editor").textContent;
+            this.content = divContents;
+        },
+        async saveNote() {
+            try {
+                if (!this.note) {
+                    // this is a new file.
+                    const docRef = await addDoc(collection(db, "notes"), {
+                        collaborators: [],
+                        content: this.content,
+                        owner: useUserStore().userData.uid,
+                        time_created: serverTimestamp(),
+                        time_modified: serverTimestamp(),
+                        title: this.title,
+                    });
+                    console.log("Document written with ID: ", docRef.id);
+                    this.addAlert("success", "Note created successfully! [" + docRef.id + "]");
+                } else {
+                    const noteRef = doc(db, "notes", this.note.id);
+                    await updateDoc(noteRef, {
+                        title: this.title,
+                        content: this.content,
+                        time_modified: serverTimestamp(),
+                    });
+                    this.addAlert("success", "Note saved successfully!");
+                }
+            } catch (error) {
+                this.addAlert("error", "Error saving note: " + error);
+            }
+        },
     },
     async created() {
         const route = useRoute();
