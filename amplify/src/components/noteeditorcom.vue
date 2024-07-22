@@ -218,7 +218,7 @@ export default {
                         title: this.title,
                     });
                     console.log("Document written with ID: ", docRef.id);
-                    this.addAlert("success", "Note created successfully! [" + docRef.id + "]");
+                    this.addAlert("success", "Note created successfully! [Note ID: " + docRef.id + "]");
                 } else {
                     const noteRef = doc(db, "notes", this.note.id);
                     await updateDoc(noteRef, {

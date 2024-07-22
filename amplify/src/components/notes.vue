@@ -19,8 +19,9 @@
             <v-row v-else dense>
                 <v-col v-for="(note, i) in notes" :key="i" cols="12" md="3">
                     <v-card class="mx-auto" color="surface-variant" max-width="344" variant="tonal">
-                        <v-card-title>{{ note.title }}</v-card-title>
-                        <v-card-subtitle>{{ note.content.substring(0, 20) }}</v-card-subtitle>
+                        <v-card-title v-if="note.title.length > 0">{{ note.title }}</v-card-title>
+                        <v-card-title v-else>Untitled</v-card-title>
+                        <v-card-subtitle>{{ note.content.substring(0, 50) }}</v-card-subtitle>
                         <template v-slot:actions>
                             <v-btn text="✎ Edit" :id="note.id" @click="editNote(note.id)"></v-btn>
                             <p class="notedate">Edited {{ formatTimeModified(note.time_modified) }}</p>
