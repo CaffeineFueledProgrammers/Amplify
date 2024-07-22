@@ -1,7 +1,7 @@
 <template>
     <v-app>
         <v-main>
-            <sidebar />
+            <noteslist />
         </v-main>
     </v-app>
 </template>
