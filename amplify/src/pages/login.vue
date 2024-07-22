@@ -73,12 +73,12 @@
                                                             Login with
                                                         </h4>
                                                         <div
-                                                            class="d-flex justify-space-between align-center mx-10 mb-11"
+                                                            class="d-flex justify-space-between align-center " 
                                                         >
-                                                            <v-btn depressed outlined color="grey" @click="googleLogin">
+                                                            <v-btn depressed outlined color="grey" @click="googleLogin" width="9vw">
                                                                 <v-icon icon="mdi-google" color="red"></v-icon>
                                                             </v-btn>
-                                                            <v-btn depressed outlined color="grey" @click="githubLogin">
+                                                            <v-btn depressed outlined color="grey" @click="githubLogin" width="9vw">
                                                                 <v-icon icon="mdi-github" color="black"></v-icon>
                                                             </v-btn>
                                                         </div>
