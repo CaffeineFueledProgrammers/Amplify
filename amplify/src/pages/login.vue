@@ -68,19 +68,20 @@
                                                         <v-btn color="blue" dark block tile @click="login">Login</v-btn>
                                                         <h4
                                                             class="text-center grey--text mt-4 mb-3"
-                                                            style="font-family: 'montserrat'"
+                                                            style= "font-family: 'montserrat'"
                                                         >
                                                             Login with
                                                         </h4>
                                                         <div
-                                                            class="d-flex justify-space-between align-center " 
+                                                            class="d-flex justify-space-between align-center mx-2 mt-2 " 
                                                         >
-                                                            <v-btn depressed outlined color="grey" @click="googleLogin" width="9vw">
+                                                            <v-btn depressed outlined color="grey" @click="googleLogin" width="8.5vw">
                                                                 <v-icon icon="mdi-google" color="red"></v-icon>
                                                             </v-btn>
-                                                            <v-btn depressed outlined color="grey" @click="githubLogin" width="9vw">
+                                                            <v-btn depressed outlined color="grey" @click="githubLogin" width="8.5vw">
                                                                 <v-icon icon="mdi-github" color="black"></v-icon>
                                                             </v-btn>
+
                                                         </div>
                                                     </v-col>
                                                 </v-row>
@@ -391,5 +392,6 @@ export default {
     min-height: 75vh;
     min-width: 60vw;
     max-width: 70vw;
+    
 }
 </style>
