@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <noteslist />
+        <sidebar />
     </v-app>
 </template>
 
