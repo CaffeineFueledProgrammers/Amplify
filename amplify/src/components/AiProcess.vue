@@ -89,6 +89,7 @@ v-iptxt h1 {
     width: 400px;
     height: 200px;
 }
+
 @media screen and (max-width: 700px) {
     v-iptxt img {
         width: 200px;

@@ -177,6 +177,7 @@
             </v-card>
                          <v-alert 
                         class="notealert"
+                        color="#566498"
                         v-for="alert in alerts"
                         :key="alert.id"
                         :type="alert.type"
@@ -288,6 +289,10 @@ export default {
 </script>
 
 <style>
+v-alert{
+    background-color: #566498;
+
+}
 .editor {
     min-height: 100vh;
     margin-top: 10px;
@@ -320,4 +325,5 @@ export default {
     max-height: 80vh;
     height: 50vh;
 }
+
 </style>
