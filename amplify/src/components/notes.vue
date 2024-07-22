@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { firebaseApp, notesRef } from "@/firebasehandler";
+import { firebaseApp, db } from "@/firebasehandler";
 import { useUserStore } from "@/stores/user";
 import { getFirestore, collection, getDocs, where, query } from "firebase/firestore";
 
@@ -65,14 +65,16 @@ export default {
             return new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000).toLocaleDateString();
         },
         editNote(note_id) {
-            this.$router.push({ path: "/noteeditor", query: { id: note_id } });
+            this.$router.push({ path: "/noteeditor", query: { note_id: note_id } });
         },
     },
     async created() {
         const store = useUserStore();
 
         try {
-            const querySnapshot = await getDocs(query(notesRef, where("owner", "==", store.userData.uid)));
+            const querySnapshot = await getDocs(
+                query(collection(db, "notes"), where("owner", "==", store.userData.uid))
+            );
             const notes = querySnapshot.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data(),

@@ -35,7 +35,10 @@
                                 </v-btn>
                             </div>
                             <!-- <div class="textborder"> -->
-                            <div contenteditable="true" class="editor" @input="updateContent" id="editor"></div>
+                            <div contenteditable="true" class="editor" @input="updateContent" id="editor" v-if="note">
+                                {{ note.content }}
+                            </div>
+                            <div contenteditable="true" class="editor" @input="updateContent" id="editor" v-else></div>
                             <!-- </div> -->
                         </v-card-text>
                         <v-card-actions>
@@ -151,9 +154,19 @@
 
 <script>
 import { ref } from "vue";
+import { useRoute } from "vue-router";
+import { firebaseApp, db } from "@/firebasehandler";
+import { useUserStore } from "@/stores/user";
+import { getFirestore, collection, getDoc, doc } from "firebase/firestore";
 
 export default {
     name: "NoteEditor",
+    data: () => ({
+        note: null,
+        alerts: [],
+        title: "",
+        content: "",
+    }),
     setup() {
         const editor = ref(null);
         const content = ref("");
@@ -186,6 +199,26 @@ export default {
             saveNote,
             updateContent,
         };
+    },
+    async created() {
+        const route = useRoute();
+        const note_id = route.query.note_id;
+
+        if (note_id) {
+            try {
+                const docSnap = await getDoc(doc(db, "notes", note_id));
+                if (docSnap.exists()) {
+                    this.note = { id: docSnap.id, ...docSnap.data() };
+                    this.title = this.note.title;
+                    console.log(this.note);
+                } else {
+                    console.log("No such document!");
+                    this.$router.push("/");
+                }
+            } catch (error) {
+                console.error("Error fetching note:", error);
+            }
+        }
     },
 };
 </script>
