@@ -1,19 +1,23 @@
 <template>
     <v-app>
         <v-main>
-            <v-row dense>
-                <v-col v-for="(variant, i) in variants" :key="i" cols="12" md="3">
-                    <v-card
-                        :variant="variant"
-                        class="mx-auto"
-                        color="surface-variant"
-                        max-width="344"
-                        subtitle="Greyhound divisely hello coldly fonwderfully"
-                        title="Headline"
-                    >
+            <div v-if="notes.length < 1">
+                <!-- TODO: add padding -->
+                <p class="text-center text-h5">You currently do not have any notes.</p>
+                <v-row justify="center">
+                    <v-col cols="auto">
+                        <v-btn text="Start Writing"></v-btn>
+                    </v-col>
+                </v-row>
+            </div>
+            <v-row v-else dense>
+                <v-col v-for="(note, i) in notes" :key="i" cols="12" md="3">
+                    <v-card class="mx-auto" color="surface-variant" max-width="344" variant="tonal">
+                        <v-card-title>{{ note.title }}</v-card-title>
+                        <v-card-subtitle>{{ note.content.substring(0, 20) }}</v-card-subtitle>
                         <template v-slot:actions>
                             <v-btn text=""></v-btn>
-                            <p class="notedate">Edited: 06/07/24</p>
+                            <p class="notedate">Edited {{ note.time_modified }}</p>
                         </template>
                     </v-card>
 
@@ -25,10 +29,18 @@
 </template>
 
 <script>
+import { firebaseApp } from "@/firebasehandler";
+import { useUserStore } from "@/stores/user";
+import { getFirestore } from "firebase/firestore";
+
 export default {
     data: () => ({
-        variants: ["tonal", "tonal", "tonal", "tonal", "tonal", "tonal", "tonal", "tonal", "tonal"],
+        notes: [],
     }),
+    setup() {
+        const store = useUserStore();
+        const db = getFirestore(firebaseApp);
+    },
 };
 </script>
 <style>
