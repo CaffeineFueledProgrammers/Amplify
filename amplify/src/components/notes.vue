@@ -3,10 +3,11 @@
         <v-main>
             <div v-if="notes.length < 1">
                 <!-- TODO: add padding -->
-                <p class="text-center text-h5">You currently do not have any notes.</p>
+                <p class="text-center text-h5 nonote">You currently do not have any notes.</p>
                 <v-row justify="center">
                     <v-col cols="auto">
-                        <v-btn text="Start Writing"></v-btn>
+                        <router-link :to="{ path: '/noteeditor' }"
+                        ><v-btn class="nonote" text="Start Writing"></v-btn></router-link>
                     </v-col>
                 </v-row>
             </div>
@@ -44,14 +45,16 @@ export default {
 };
 </script>
 <style>
-.note {
-    margin-top: 10%;
-}
+
 .notedate {
     font-size: 0.8rem;
     color: #a8a8a8;
     opacity: 0.5;
     margin-top: 0;
     margin-left: 30%;
+}
+.nonote {
+    margin-top: 5vh;
+  
 }
 </style>
